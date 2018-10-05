@@ -54,8 +54,17 @@ public class InterfazSpaceInvaders extends JFrame {
 	private HiloAnimacionEnemigos hilitoAnimacion;
 
 	private boolean pausa;
+	
+	private static InterfazSpaceInvaders instancia;
 
-	public InterfazSpaceInvaders() {
+	public static InterfazSpaceInvaders getInstance() {
+		if(instancia==null) {
+			instancia = new InterfazSpaceInvaders();
+		}
+		return instancia;
+	}
+	
+	private InterfazSpaceInvaders() {
 
 		mundo = new SpaceInvaders(false);
 
@@ -66,7 +75,7 @@ public class InterfazSpaceInvaders extends JFrame {
 		addKeyListener(imagen);
 		contenedor = this.getContentPane();
 		card.addLayoutComponent(imagen, "Inicio");
-		card.addLayoutComponent(panelMenu, "Menú");
+		card.addLayoutComponent(panelMenu, "Menï¿½");
 		card.addLayoutComponent(panelNivel, "Juego");
 
 		contenedor.add(imagen);
@@ -92,8 +101,8 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * @param nombre
 	 */
 	public void cambiarPanel(String nombre) {
-		if (nombre.equals("Menú")) {
-			card.show(contenedor, "Menú");
+		if (nombre.equals("Menï¿½")) {
+			card.show(contenedor, "Menï¿½");
 		} else if (nombre.equals("Juego")) {
 			card.show(contenedor, "Juego");
 		}
@@ -312,7 +321,7 @@ public class InterfazSpaceInvaders extends JFrame {
 			mundo.setJugadorActual(actual);
 			panelMenu.repaint();
 		} else
-			JOptionPane.showMessageDialog(this, "Por favor cree algún jugador", "No existen jugadores",
+			JOptionPane.showMessageDialog(this, "Por favor cree algï¿½n jugador", "No existen jugadores",
 					JOptionPane.INFORMATION_MESSAGE);
 	}
 
@@ -360,7 +369,7 @@ public class InterfazSpaceInvaders extends JFrame {
 				panelMenu.repaint();
 				mundo.eliminarPartida();
 				actualizarPartidas();
-				cambiarPanel("Menú");	
+				cambiarPanel("Menï¿½");	
 				panelMenu.repaint();
 			}
 		} catch (IOException e) {
@@ -379,7 +388,7 @@ public class InterfazSpaceInvaders extends JFrame {
 			e.printStackTrace();
 		}
 		actualizarPartidas();
-		cambiarPanel("Menú");	
+		cambiarPanel("Menï¿½");	
 		panelMenu.repaint();
 	}
 
@@ -419,7 +428,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		InterfazSpaceInvaders ventana = new InterfazSpaceInvaders();
+		InterfazSpaceInvaders ventana = InterfazSpaceInvaders.getInstance();
 		ventana.setVisible(true);
 	}
 
