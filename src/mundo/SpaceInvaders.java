@@ -14,8 +14,8 @@ import excepciones.PartidaYaExisteException;
 /**
  * Clase principal del mundo que representa el juego.
  * 
- * @author Manuel Alejandro Coral Lozano - Juan Sebastián Quintero Yoshioka
- *         Proyecto final - Algoritmos y programación II.
+ * @author Manuel Alejandro Coral Lozano - Juan Sebastiï¿½n Quintero Yoshioka
+ *         Proyecto final - Algoritmos y programaciï¿½n II.
  */
 public class SpaceInvaders {
 
@@ -43,6 +43,7 @@ public class SpaceInvaders {
 	 */
 	private Puntaje primerPuntaje;
 
+	private NaveFactoryMethod factoryNave;
 	// -----------------------------------------------------------------
 	// ----------------------------Atributos----------------------------
 	// -----------------------------------------------------------------
@@ -61,7 +62,9 @@ public class SpaceInvaders {
 	 * @param enFuncionamiento
 	 */
 	public SpaceInvaders(boolean enFuncionamiento) {
-
+		
+		factoryNave = new NaveFactory();
+		
 		this.enFuncionamiento = enFuncionamiento;
 
 		jugadores = new ArrayList<NaveJugador>();
@@ -81,7 +84,7 @@ public class SpaceInvaders {
 	}
 
 	// -----------------------------------------------------------------
-	// -----------------------------Métodos-----------------------------
+	// -----------------------------Mï¿½todos-----------------------------
 	// -----------------------------------------------------------------
 
 	/**
@@ -177,9 +180,10 @@ public class SpaceInvaders {
 	public void agregarJugador(String nombre, String nickname) throws NicknameYaExisteException, IOException {
 
 		if (buscarJugador(nickname) == null) {
-			NaveJugador agregar = new NaveJugador(nombre, nickname);
-			jugadores.add(agregar);
-			jugadorActual = agregar;
+			//NaveJugador agregar = new NaveJugador(nombre, nickname);
+			Nave agregar = factoryNave.createNave(nombre, nickname);
+			jugadores.add((NaveJugador) agregar);
+			jugadorActual = (NaveJugador) agregar;
 			jugadorActual.setPosInicialX(300);
 			jugadorActual.setPosIncialY(410);
 			jugadorActual.setAncho(30);

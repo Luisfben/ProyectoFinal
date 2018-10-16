@@ -1,0 +1,5 @@
+package mundo;
+
+public enum TipoNave {
+	NAVEJUGADOR, INVASORCALAMAR, INVASORCANGREJO, INVASORPULPO 
+}
