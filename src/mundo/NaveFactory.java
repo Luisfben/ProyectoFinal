@@ -1,6 +1,8 @@
 package mundo;
 
-public class NaveFactory implements NaveFactoryMethod {
+import java.io.Serializable;
+
+public class NaveFactory implements NaveFactoryMethod, Serializable {
 
 	@Override
 	public Enemigo createNave(TipoNave tipo, double velocidad, int posX, int posY, int vida, int ancho, int alto,
