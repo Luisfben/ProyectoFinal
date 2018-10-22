@@ -8,21 +8,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import mundo.Disparo;
-import mundo.MundoBuilder1;
+import mundo.MundoBuilder;
 import mundo.NaveJugador;
 import mundo.Partida;
-import mundo.MundoBuilder1;
+import mundo.MundoBuilder;
 
 public class PanelNivel extends JPanel {
 
 	private Partida partida;
-	private MundoBuilder1 space;
+	private MundoBuilder space;
 	private InterfazSpaceInvaders interfaz;
 
 	private int posJugadorActualX;
 	private int posJugadorActualY;
 
-	public PanelNivel(Partida actual, MundoBuilder1 b, InterfazSpaceInvaders c) {
+	public PanelNivel(Partida actual, MundoBuilder b, InterfazSpaceInvaders c) {
 		// TODO Auto-generated constructor stub
 		// BORAR
 

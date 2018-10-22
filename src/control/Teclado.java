@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 import interfaz.InterfazSpaceInvaders;
 import mundo.NaveJugador;
-import mundo.MundoBuilder1;
+import mundo.MundoBuilder;
 
 /**
  * 
@@ -20,7 +20,7 @@ public class Teclado implements KeyListener {
 
 	// public Partida actu;
 
-	private MundoBuilder1 actu;
+	private MundoBuilder actu;
 
 	public NaveJugador navesita;
 
@@ -30,7 +30,7 @@ public class Teclado implements KeyListener {
 	// -----------------------------M�todos-----------------------------
 	// -----------------------------------------------------------------
 
-	public Teclado(InterfazSpaceInvaders principal, MundoBuilder1 actual) {
+	public Teclado(InterfazSpaceInvaders principal, MundoBuilder actual) {
 		// TODO Auto-generated constructor stub
 		interfaz = principal;
 		actu = actual;

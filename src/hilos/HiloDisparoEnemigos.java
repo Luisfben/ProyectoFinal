@@ -3,15 +3,15 @@ package hilos;
 
 import interfaz.InterfazSpaceInvaders;
 import mundo.Partida;
-import mundo.MundoBuilder1;
+import mundo.MundoBuilder;
 
 public class HiloDisparoEnemigos extends Thread {
 
 	private Partida partidaEnemigos;
-	private MundoBuilder1 space;
+	private MundoBuilder space;
 	private InterfazSpaceInvaders interfaz;
 	
-	public HiloDisparoEnemigos(Partida a, InterfazSpaceInvaders p, MundoBuilder1 b) {
+	public HiloDisparoEnemigos(Partida a, InterfazSpaceInvaders p, MundoBuilder b) {
 		// TODO Auto-generated constructor stub
 
 		partidaEnemigos = a;

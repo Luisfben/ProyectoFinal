@@ -17,7 +17,7 @@ import excepciones.PartidaYaExisteException;
  * @author Manuel Alejandro Coral Lozano - Juan Sebasti�n Quintero Yoshioka
  *         Proyecto final - Algoritmos y programaci�n II.
  */
-public class SpaceInvaders extends MundoBuilder1{
+public class SpaceInvaders extends MundoBuilder{
 
 	/**
 	 * 
@@ -26,19 +26,19 @@ public class SpaceInvaders extends MundoBuilder1{
 
 	public void buildMundo(boolean enFuncionamiento) {
 		
-		mundo1.setFactoryNave(new NaveFactory());
+		mundo.setFactoryNave(new NaveFactory());
 		
 		this.enFuncionamiento = enFuncionamiento;
 		
 		ArrayList<NaveJugador> jugadores = new ArrayList<NaveJugador>();
 		
-		mundo1.setJugadores(jugadores);
+		mundo.setJugadores(jugadores);
 
-		mundo1.setPartidaActual(null);
+		mundo.setPartidaActual(null);
 		
-		mundo1.setJugadorActual(null);
+		mundo.setJugadorActual(null);
 
-		mundo1.setPrimerPuntaje(null);
+		mundo.setPrimerPuntaje(null);
 		
 		try {
 			deserializarJugador();
@@ -77,9 +77,9 @@ public class SpaceInvaders extends MundoBuilder1{
 		NaveJugador naveBuscada = null;
 		boolean buscado = false;
 
-		for (int i = 0; i < mundo1.getJugadores().size() && !buscado; i++) {
-			if (mundo1.getJugadores().get(i).getNickname().equalsIgnoreCase(nickname)) {
-				naveBuscada = mundo1.getJugadores().get(i); 
+		for (int i = 0; i < mundo.getJugadores().size() && !buscado; i++) {
+			if (mundo.getJugadores().get(i).getNickname().equalsIgnoreCase(nickname)) {
+				naveBuscada = mundo.getJugadores().get(i); 
 				buscado = true;
 			}
 		}
@@ -97,13 +97,13 @@ public class SpaceInvaders extends MundoBuilder1{
 	public void agregarJugador(String nombre, String nickname) throws NicknameYaExisteException, IOException {
 
 		if (buscarJugador(nickname) == null) {
-			Nave agregar = mundo1.getFactoryNave().createNave(nombre, nickname);
-			mundo1.getJugadores().add((NaveJugador) agregar);
-			mundo1.setJugadorActual((NaveJugador) agregar);
-			mundo1.getJugadorActual().setPosInicialX(300);
-			mundo1.getJugadorActual().setPosIncialY(410);
-			mundo1.getJugadorActual().setAncho(30);
-			mundo1.getJugadorActual().setAlto(19);
+			Nave agregar = mundo.getFactoryNave().createNave(nombre, nickname);
+			mundo.getJugadores().add((NaveJugador) agregar);
+			mundo.setJugadorActual((NaveJugador) agregar);
+			mundo.getJugadorActual().setPosInicialX(300);
+			mundo.getJugadorActual().setPosIncialY(410);
+			mundo.getJugadorActual().setAncho(30);
+			mundo.getJugadorActual().setAlto(19);
 			serializarJugador();
 		} else
 			throw new NicknameYaExisteException(nickname);
@@ -121,7 +121,7 @@ public class SpaceInvaders extends MundoBuilder1{
 		FileOutputStream fos = new FileOutputStream(archivo);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-		oos.writeObject(mundo1.getJugadores());
+		oos.writeObject(mundo.getJugadores());
 
 		oos.close();
 		fos.close();
@@ -129,7 +129,7 @@ public class SpaceInvaders extends MundoBuilder1{
 	}
 
 	public void iniciarPartida () {
-		mundo1.getJugadorActual().setVida(3);
+		mundo.getJugadorActual().setVida(3);
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class SpaceInvaders extends MundoBuilder1{
 		FileInputStream fis = new FileInputStream(archivo);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 
-		mundo1.setJugadores((ArrayList<NaveJugador>) ois.readObject());
+		mundo.setJugadores((ArrayList<NaveJugador>) ois.readObject());
 
 		ois.close();
 		fis.close();
@@ -154,24 +154,24 @@ public class SpaceInvaders extends MundoBuilder1{
 
 	public ArrayList<Partida> darPartidasJugador() {
 		ArrayList<Partida> partidas = new ArrayList<Partida>();
-		if (mundo1.getJugadorActual().getPartidaRaiz() != null)
-			mundo1.getJugadorActual().getPartidaRaiz().inorden(partidas);
+		if (mundo.getJugadorActual().getPartidaRaiz() != null)
+			mundo.getJugadorActual().getPartidaRaiz().inorden(partidas);
 
 		return partidas;
 	}
 
 	public void crearPartida(String nombre) throws PartidaYaExisteException, IOException {
-		mundo1.setPartidaActual(mundo1.getJugadorActual().crearPartida(nombre));
-		mundo1.getPartidaActual().setPuntaje(new Puntaje(0, mundo1.getJugadorActual().getNickname(), mundo1.getPartidaActual().getNombre()));
+		mundo.setPartidaActual(mundo.getJugadorActual().crearPartida(nombre));
+		mundo.getPartidaActual().setPuntaje(new Puntaje(0, mundo.getJugadorActual().getNickname(), mundo.getPartidaActual().getNombre()));
 		serializarJugador();
 	}
 
 	@SuppressWarnings("unchecked")
 	public ArrayList<NaveJugador> ordenarPorNickname() {
 
-		ArrayList<NaveJugador> jugadoresOrdenados = (ArrayList<NaveJugador>) mundo1.getJugadores().clone();
+		ArrayList<NaveJugador> jugadoresOrdenados = (ArrayList<NaveJugador>) mundo.getJugadores().clone();
 
-		if (mundo1.getJugadores() != null) {
+		if (mundo.getJugadores() != null) {
 			for (int i = 1; i < jugadoresOrdenados.size(); i++) {
 				for (int j = i; j > 0 && jugadoresOrdenados.get(j - 1).getNickname()
 						.compareTo(jugadoresOrdenados.get(j).getNickname()) > 0; j--) {
@@ -214,23 +214,23 @@ public class SpaceInvaders extends MundoBuilder1{
 		}
 
 		if(encontrado)
-			mundo1.setJugadorActual((NaveJugador) jugadoresOrdenados.get(posicion));
+			mundo.setJugadorActual((NaveJugador) jugadoresOrdenados.get(posicion));
 
 		return encontrado;
 	}
 
 	public void agregarPuntaje(Puntaje puntaje) {
-		if (mundo1.getPrimerPuntaje() == null) {
-			mundo1.setPrimerPuntaje(puntaje);
+		if (mundo.getPrimerPuntaje() == null) {
+			mundo.setPrimerPuntaje(puntaje);
 		} else {   
-			if (mundo1.getPrimerPuntaje().getPuntuacion() < puntaje.getPuntuacion()) {
+			if (mundo.getPrimerPuntaje().getPuntuacion() < puntaje.getPuntuacion()) {
 
-				puntaje.setSiguiente(mundo1.getPrimerPuntaje());
-				mundo1.getPrimerPuntaje().setAnterior(puntaje);
-				mundo1.setPrimerPuntaje(puntaje);
+				puntaje.setSiguiente(mundo.getPrimerPuntaje());
+				mundo.getPrimerPuntaje().setAnterior(puntaje);
+				mundo.setPrimerPuntaje(puntaje);
 			} else {
 
-				Puntaje aux = mundo1.getPrimerPuntaje();
+				Puntaje aux = mundo.getPrimerPuntaje();
 
 
 				while (aux.getSiguiente() != null && aux.getSiguiente().getPuntuacion() >= puntaje.getPuntuacion()) {
@@ -256,7 +256,7 @@ public class SpaceInvaders extends MundoBuilder1{
 	public ArrayList<String> mejoresPuntajes(){
 
 		ArrayList<String> mejoresPuntajes = new ArrayList<String>();
-		Puntaje primer = mundo1.getPrimerPuntaje();
+		Puntaje primer = mundo.getPrimerPuntaje();
 		int contador = 1;
 		while(primer != null && contador <= 10){
 			mejoresPuntajes.add(contador + " " + primer.toString());
@@ -278,7 +278,7 @@ public class SpaceInvaders extends MundoBuilder1{
 		FileOutputStream fos = new FileOutputStream(archivo);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-		oos.writeObject(mundo1.getPrimerPuntaje());
+		oos.writeObject(mundo.getPrimerPuntaje());
 
 		oos.close();
 		fos.close();
@@ -298,24 +298,24 @@ public class SpaceInvaders extends MundoBuilder1{
 		FileInputStream fis = new FileInputStream(archivo);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 
-		mundo1.setPrimerPuntaje( (Puntaje) ois.readObject());
+		mundo.setPrimerPuntaje( (Puntaje) ois.readObject());
 
 		ois.close();
 		fis.close();
 	}
 
 	public int puntosPorVida(){
-		return (mundo1.getJugadorActual().getVida()*200);
+		return (mundo.getJugadorActual().getVida()*200);
 	}
 
 	public int puntosPorDisparos(){
-		return mundo1.getJugadorActual().getCantidadDisparos();
+		return mundo.getJugadorActual().getCantidadDisparos();
 	}
 
 	public void eliminarPartida() throws IOException{
-		Puntaje nuevoPuntaje = new Puntaje(mundo1.getPartidaActual().getPuntaje().getPuntuacion(), mundo1.getJugadorActual().getNickname(), mundo1.getPartidaActual().getNombre());
+		Puntaje nuevoPuntaje = new Puntaje(mundo.getPartidaActual().getPuntaje().getPuntuacion(), mundo.getJugadorActual().getNickname(), mundo.getPartidaActual().getNombre());
 		agregarPuntaje(nuevoPuntaje);
-		mundo1.getJugadorActual().setPartidaRaiz(mundo1.getJugadorActual().getPartidaRaiz().eliminar(mundo1.getPartidaActual().getNombre()));
+		mundo.getJugadorActual().setPartidaRaiz(mundo.getJugadorActual().getPartidaRaiz().eliminar(mundo.getPartidaActual().getNombre()));
 		serializarJugador();
 		serializarPuntaje();
 	}

@@ -18,7 +18,7 @@ import hilos.HiloAuxiliarCreaDisparo;
 import hilos.HiloDisparoEnemigos;
 import hilos.HiloDisparoJugador;
 import hilos.HiloEnemigos;
-import mundo.MundoBuilder1;
+import mundo.MundoBuilder;
 import mundo.NaveJugador;
 import mundo.Partida;
 import mundo.SpaceInvaders;
@@ -56,7 +56,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	
 	private static InterfazSpaceInvaders instancia;
 	
-	private MundoBuilder1 mundoBuilder;
+	private MundoBuilder mundoBuilder;
 
 	public static InterfazSpaceInvaders getInstance() {
 		if(instancia==null) {
@@ -66,17 +66,16 @@ public class InterfazSpaceInvaders extends JFrame {
 	}
 	
 	public void constructInterfaceSpaceInvader() {
-		TestInterfazSpaceInvaders();
+		mundoBuilder.crearMundo();
+		mundoBuilder.buildMundo(false);
+		buildInterfaz();
 	}
 	
-	public void setMundoBuilder1(MundoBuilder1 mb) {
+	public void setMundoBuilder(MundoBuilder mb) {
 		mundoBuilder= mb;
 	}
 	
-	private void TestInterfazSpaceInvaders() {
-
-		mundoBuilder.creaMundo();
-		mundoBuilder.buildMundo(false);
+	private void buildInterfaz() {
 
 		panelMenu = new PanelMenu(this);
 		panelNivel = new PanelNivel(mundoBuilder.getMundo().getPartidaActual(), mundoBuilder, this);
@@ -212,7 +211,6 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * @return
 	 */
 	public boolean estaEnFuncionamiento() {
-		//return mundo.getEnFuncionamiento();
 		return mundoBuilder.getMundo().isEnFuncionamiento();
 	}
 
@@ -440,7 +438,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 */
 	public static void main(String[] args) {
 		InterfazSpaceInvaders ventana = InterfazSpaceInvaders.getInstance();
-		ventana.setMundoBuilder1(new SpaceInvaders());
+		ventana.setMundoBuilder(new SpaceInvaders()); 
 		ventana.constructInterfaceSpaceInvader();
 		ventana.setVisible(true);
 	}

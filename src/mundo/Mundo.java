@@ -2,7 +2,7 @@ package mundo;
 
 import java.util.ArrayList;
 
-public class Mundo1 {
+public class Mundo {
 	// ---------------------------Asociaciones--------------------------
 	private ArrayList<NaveJugador> jugadores;
 	private Partida partidaActual;

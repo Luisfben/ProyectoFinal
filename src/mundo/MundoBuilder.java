@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import excepciones.NicknameYaExisteException;
 import excepciones.PartidaYaExisteException;
 
-public abstract class MundoBuilder1 {
-	protected Mundo1 mundo1;
+public abstract class MundoBuilder {
+	protected Mundo mundo;
 
-	public Mundo1 getMundo() {
-		return mundo1;
+	public Mundo getMundo() {
+		return mundo;
 	}
 
-	public void creaMundo() {
-		mundo1 = new Mundo1();
+	public void crearMundo() {
+		mundo = new Mundo();
 	}
 
 	public abstract void buildMundo(boolean enFuncionamiento);
