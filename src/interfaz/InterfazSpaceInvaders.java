@@ -18,6 +18,7 @@ import hilos.HiloAuxiliarCreaDisparo;
 import hilos.HiloDisparoEnemigos;
 import hilos.HiloDisparoJugador;
 import hilos.HiloEnemigos;
+import mundo.MundoBuilder1;
 import mundo.NaveJugador;
 import mundo.Partida;
 import mundo.SpaceInvaders;
@@ -41,8 +42,6 @@ public class InterfazSpaceInvaders extends JFrame {
 
 	private PanelNivel panelNivel;
 
-	private SpaceInvaders mundo;
-
 	private HiloEnemigos hilitoEnemigo;
 
 	private HiloDisparoJugador hilitoDisparo;
@@ -56,6 +55,8 @@ public class InterfazSpaceInvaders extends JFrame {
 	private boolean pausa;
 	
 	private static InterfazSpaceInvaders instancia;
+	
+	private MundoBuilder1 mundoBuilder;
 
 	public static InterfazSpaceInvaders getInstance() {
 		if(instancia==null) {
@@ -64,12 +65,21 @@ public class InterfazSpaceInvaders extends JFrame {
 		return instancia;
 	}
 	
-	private InterfazSpaceInvaders() {
+	public void constructInterfaceSpaceInvader() {
+		TestInterfazSpaceInvaders();
+	}
+	
+	public void setMundoBuilder1(MundoBuilder1 mb) {
+		mundoBuilder= mb;
+	}
+	
+	private void TestInterfazSpaceInvaders() {
 
-		mundo = new SpaceInvaders(false);
+		mundoBuilder.creaMundo();
+		mundoBuilder.buildMundo(false);
 
 		panelMenu = new PanelMenu(this);
-		panelNivel = new PanelNivel(mundo.getPartidaActual(), mundo, this);
+		panelNivel = new PanelNivel(mundoBuilder.getMundo().getPartidaActual(), mundoBuilder, this);
 
 		imagen = new PanelImagenInicial(this);
 		addKeyListener(imagen);
@@ -85,7 +95,7 @@ public class InterfazSpaceInvaders extends JFrame {
 		contenedor.setLayout(card);
 		card.show(contenedor, "Inicio");
 
-		tecladito = new Teclado(this, mundo);
+		tecladito = new Teclado(this, mundoBuilder);
 		addKeyListener(tecladito);
 
 		setSize(640, 480);
@@ -113,7 +123,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 */
 	public void cerrar() {
 		try {
-			mundo.serializarJugador();
+			mundoBuilder.serializarJugador();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -140,10 +150,10 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * 
 	 */
 	public void startHiloEnemigo() {
-		for (int i = 0; i < mundo.getPartidaActual().getEnemigos().length; i++) {
-			for (int j = 0; j < mundo.getPartidaActual().getEnemigos()[0].length; j++) {
-				if (mundo.getPartidaActual().getEnemigos()[i][j] != null) {
-					hilitoEnemigo = new HiloEnemigos(mundo.getPartidaActual().getEnemigos()[i][j], this);
+		for (int i = 0; i < mundoBuilder.getMundo().getPartidaActual().getEnemigos().length; i++) {
+			for (int j = 0; j < mundoBuilder.getMundo().getPartidaActual().getEnemigos()[0].length; j++) {
+				if (mundoBuilder.getMundo().getPartidaActual().getEnemigos()[i][j] != null) {
+					hilitoEnemigo = new HiloEnemigos(mundoBuilder.getMundo().getPartidaActual().getEnemigos()[i][j], this);
 					hilitoEnemigo.start();
 				}
 			}
@@ -154,7 +164,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * 
 	 */
 	public void startHiloAuxiliar() {
-		hilitoAuxiliar = new HiloAuxiliarCreaDisparo(mundo.getPartidaActual(), this);
+		hilitoAuxiliar = new HiloAuxiliarCreaDisparo(mundoBuilder.getMundo().getPartidaActual(), this);
 		hilitoAuxiliar.start();
 	}
 
@@ -162,10 +172,10 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * 
 	 */
 	public void startHiloAnimacion() {
-		for (int i = 0; i < mundo.getPartidaActual().getEnemigos().length; i++) {
-			for (int j = 0; j < mundo.getPartidaActual().getEnemigos()[0].length; j++) {
-				if (mundo.getPartidaActual().getEnemigos()[i][j] != null) {
-					hilitoAnimacion = new HiloAnimacionEnemigos(mundo.getPartidaActual().getEnemigos()[i][j], this);
+		for (int i = 0; i < mundoBuilder.getMundo().getPartidaActual().getEnemigos().length; i++) {
+			for (int j = 0; j < mundoBuilder.getMundo().getPartidaActual().getEnemigos()[0].length; j++) {
+				if (mundoBuilder.getMundo().getPartidaActual().getEnemigos()[i][j] != null) {
+					hilitoAnimacion = new HiloAnimacionEnemigos(mundoBuilder.getMundo().getPartidaActual().getEnemigos()[i][j], this);
 					hilitoAnimacion.start();
 				}
 			}
@@ -176,7 +186,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * 
 	 */
 	public void startHiloDisparoEnemigo() {
-		hilitoEnemigoDisparo = new HiloDisparoEnemigos(mundo.getPartidaActual(), this, mundo);
+		hilitoEnemigoDisparo = new HiloDisparoEnemigos(mundoBuilder.getMundo().getPartidaActual(), this, mundoBuilder);
 		hilitoEnemigoDisparo.start();
 	}
 
@@ -184,8 +194,8 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * 
 	 */
 	public void startHiloJugador() {
-		hilitoDisparo = new HiloDisparoJugador((NaveJugador) mundo.getJugadorActual(), this,
-				mundo.getPartidaActual().getEnemigos(), mundo.getPartidaActual());
+		hilitoDisparo = new HiloDisparoJugador((NaveJugador) mundoBuilder.getMundo().getJugadorActual(), this,
+				mundoBuilder.getMundo().getPartidaActual().getEnemigos(), mundoBuilder.getMundo().getPartidaActual());
 		hilitoDisparo.start();
 	}
 
@@ -202,7 +212,8 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * @return
 	 */
 	public boolean estaEnFuncionamiento() {
-		return mundo.getEnFuncionamiento();
+		//return mundo.getEnFuncionamiento();
+		return mundoBuilder.getMundo().isEnFuncionamiento();
 	}
 
 	/**
@@ -210,7 +221,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * @param salida
 	 */
 	public void modificarFuncionamiento (boolean salida) {
-		mundo.setEnFuncionamiento(salida);
+		mundoBuilder.getMundo().setEnFuncionamiento(salida);
 	}
 
 	/**
@@ -226,7 +237,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * @return
 	 */
 	public NaveJugador getJugadorActual() {
-		return mundo.getJugadorActual();
+		return mundoBuilder.getMundo().getJugadorActual();
 	}
 
 	/**
@@ -257,7 +268,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * 
 	 */
 	public void iniciarTodosLosHilos() {
-		mundo.setEnFuncionamiento(true);
+		mundoBuilder.getMundo().setEnFuncionamiento(true);
 		startHiloJugador();
 		startHiloEnemigo();
 		startHiloAnimacion();
@@ -282,12 +293,12 @@ public class InterfazSpaceInvaders extends JFrame {
 	 */
 	public void reqCrearPartida(String nombre) {
 		try {
-			mundo.crearPartida(nombre);
-			mundo.getPartidaActual().inicializarPartida();
+			mundoBuilder.crearPartida(nombre);
+			mundoBuilder.getMundo().getPartidaActual().inicializarPartida();
 			actualizarPartidas();
 			actualizarPartidaActual(nombre);
-			panelNivel.setPartida(mundo.getPartidaActual());
-			mundo.iniciarPartida();
+			panelNivel.setPartida(mundoBuilder.getMundo().getPartidaActual());
+			mundoBuilder.iniciarPartida();
 			cambiarPanel("Juego");
 		} catch (PartidaYaExisteException | IOException e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "Error al crear la partida", JOptionPane.ERROR_MESSAGE);
@@ -301,7 +312,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 */
 	public void reqAgregarJugador(String nombre, String nickname) {
 		try {
-			mundo.agregarJugador(nombre, nickname);
+			mundoBuilder.agregarJugador(nombre, nickname);
 			panelMenu.repaint();
 			actualizarJugadores();
 			actualizarJugadorActual(nickname);
@@ -317,8 +328,8 @@ public class InterfazSpaceInvaders extends JFrame {
 	 */
 	public void actualizarJugadorActual(String nickname) {
 		if (!nickname.equals("")) {
-			NaveJugador actual = mundo.buscarJugador(nickname);
-			mundo.setJugadorActual(actual);
+			NaveJugador actual = mundoBuilder.buscarJugador(nickname);
+			mundoBuilder.getMundo().setJugadorActual(actual);
 			panelMenu.repaint();
 		} else
 			JOptionPane.showMessageDialog(this, "Por favor cree alg�n jugador", "No existen jugadores",
@@ -331,8 +342,8 @@ public class InterfazSpaceInvaders extends JFrame {
 	 */
 	public void actualizarPartidaActual(String nombre) {
 
-		Partida partidaActual = mundo.getJugadorActual().getPartidaRaiz().buscarPartida(nombre);
-		mundo.setPartidaActual(partidaActual);
+		Partida partidaActual = mundoBuilder.getMundo().getJugadorActual().getPartidaRaiz().buscarPartida(nombre);
+		mundoBuilder.getMundo().setPartidaActual(partidaActual);
 		panelNivel.setPartida(partidaActual);
 		iniciarTodosLosHilos();
 
@@ -342,7 +353,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * 
 	 */
 	public void actualizarJugadores() {
-		ArrayList<NaveJugador> jugadores = mundo.getJugadores();
+		ArrayList<NaveJugador> jugadores = mundoBuilder.getMundo().getJugadores();
 		if (jugadores == null)
 			jugadores = new ArrayList<>();
 		panelMenu.getDialogoSeleccionarJugador().cambiarListaJugadores(jugadores);
@@ -352,7 +363,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * 
 	 */
 	public void actualizarPartidas() {
-		ArrayList<Partida> partidas = mundo.darPartidasJugador();
+		ArrayList<Partida> partidas = mundoBuilder.darPartidasJugador();
 		if (partidas.size() == 0)
 			partidas = new ArrayList<Partida>();
 		panelMenu.getDialogoSeleccionarPartida().cambiarListaPartidas(partidas);
@@ -363,11 +374,11 @@ public class InterfazSpaceInvaders extends JFrame {
 	 */
 	public void nivelCompleto () {
 		try {
-			if (mundo.getPartidaActual().nivelCompleto()) {
+			if (mundoBuilder.getMundo().getPartidaActual().nivelCompleto()) {
 				iniciarTodosLosHilos();
 			} else {
 				panelMenu.repaint();
-				mundo.eliminarPartida();
+				mundoBuilder.eliminarPartida();
 				actualizarPartidas();
 				cambiarPanel("Men�");	
 				panelMenu.repaint();
@@ -383,7 +394,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	public void perder(){
 		panelMenu.repaint();
 		try {
-			mundo.eliminarPartida();
+			mundoBuilder.eliminarPartida();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -396,7 +407,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * 
 	 */
 	public void ordenarJugadores() {
-		ArrayList<NaveJugador> jugadores = mundo.ordenarPorNickname();
+		ArrayList<NaveJugador> jugadores = mundoBuilder.ordenarPorNickname();
 		if (jugadores == null)
 			jugadores = new ArrayList<>();
 		panelMenu.getDialogoSeleccionarJugador().cambiarListaJugadores(jugadores);
@@ -407,7 +418,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * @param nickname
 	 */
 	public void loginRapido(String nickname){
-		if(!mundo.busquedaRapida(nickname)){
+		if(!mundoBuilder.busquedaRapida(nickname)){
 			JOptionPane.showMessageDialog(null, "El jugador con el nickname " + nickname + " no existe",
 					"Jugador no encontrado", JOptionPane.ERROR_MESSAGE);
 		}
@@ -418,7 +429,7 @@ public class InterfazSpaceInvaders extends JFrame {
 	 * 
 	 */
 	public void mejoresPuntajes(){
-		panelMenu.setDialogoMejoresPuntajes(new DialogoMejoresPuntajes(this,mundo.mejoresPuntajes()));
+		panelMenu.setDialogoMejoresPuntajes(new DialogoMejoresPuntajes(this,mundoBuilder.mejoresPuntajes()));
 		panelMenu.getDialogoMejoresPuntajes().mostrar();	
 	}
 
@@ -429,6 +440,8 @@ public class InterfazSpaceInvaders extends JFrame {
 	 */
 	public static void main(String[] args) {
 		InterfazSpaceInvaders ventana = InterfazSpaceInvaders.getInstance();
+		ventana.setMundoBuilder1(new SpaceInvaders());
+		ventana.constructInterfaceSpaceInvader();
 		ventana.setVisible(true);
 	}
 

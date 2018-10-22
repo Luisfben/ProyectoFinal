@@ -5,12 +5,12 @@ import java.awt.event.KeyListener;
 
 import interfaz.InterfazSpaceInvaders;
 import mundo.NaveJugador;
-import mundo.SpaceInvaders;
+import mundo.MundoBuilder1;
 
 /**
  * 
- * @author Manuel Alejandro Coral Lozano - Juan Sebastián Quintero Yoshioka
- *         Proyecto final - Algoritmos y programación II.
+ * @author Manuel Alejandro Coral Lozano - Juan Sebastiï¿½n Quintero Yoshioka
+ *         Proyecto final - Algoritmos y programaciï¿½n II.
  */
 public class Teclado implements KeyListener {
 
@@ -20,28 +20,28 @@ public class Teclado implements KeyListener {
 
 	// public Partida actu;
 
-	private SpaceInvaders actu;
+	private MundoBuilder1 actu;
 
 	public NaveJugador navesita;
 
 	public InterfazSpaceInvaders interfaz;
 
 	// -----------------------------------------------------------------
-	// -----------------------------Métodos-----------------------------
+	// -----------------------------Mï¿½todos-----------------------------
 	// -----------------------------------------------------------------
 
-	public Teclado(InterfazSpaceInvaders principal, SpaceInvaders actual) {
+	public Teclado(InterfazSpaceInvaders principal, MundoBuilder1 actual) {
 		// TODO Auto-generated constructor stub
 		interfaz = principal;
 		actu = actual;
-		navesita = actu.getJugadorActual();
+		navesita = actu.getMundo().getJugadorActual();
 
 	}
 
 	public void keyPressed(KeyEvent e) {
 
-		if (actu.getEnFuncionamiento()) {
-			navesita = actu.getJugadorActual();
+		if (actu.getMundo().isEnFuncionamiento()) {
+			navesita = actu.getMundo().getJugadorActual();
 			if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 
 				if (navesita.getDisparoUno() == null) {
