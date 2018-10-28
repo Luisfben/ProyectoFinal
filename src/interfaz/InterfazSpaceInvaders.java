@@ -3,6 +3,7 @@ package interfaz;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -10,7 +11,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import control.Teclado;
 import excepciones.NicknameYaExisteException;
 import excepciones.PartidaYaExisteException;
 import hilos.HiloAnimacionEnemigos;
@@ -22,6 +22,9 @@ import mundo.MundoBuilder;
 import mundo.NaveJugador;
 import mundo.Partida;
 import mundo.SpaceInvaders;
+import control.PalancaMando;
+import control.Teclado;
+import control.TecladoAdapter;
 
 public class InterfazSpaceInvaders extends JFrame {
 
@@ -36,7 +39,8 @@ public class InterfazSpaceInvaders extends JFrame {
 
 	private PanelImagenInicial imagen;
 
-	private Teclado tecladito;
+	//private Teclado tecladito;
+	private PalancaMando tecladito;
 
 	private PanelMenu panelMenu;
 
@@ -94,8 +98,9 @@ public class InterfazSpaceInvaders extends JFrame {
 		contenedor.setLayout(card);
 		card.show(contenedor, "Inicio");
 
-		tecladito = new Teclado(this, mundoBuilder);
-		addKeyListener(tecladito);
+		tecladito = new TecladoAdapter(new Teclado(this, mundoBuilder));
+		//tecladito = new Teclado(this, mundoBuilder);
+		addKeyListener((KeyListener) tecladito);
 
 		setSize(640, 480);
 		setUndecorated(true);

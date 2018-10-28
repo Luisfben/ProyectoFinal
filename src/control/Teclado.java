@@ -12,7 +12,7 @@ import mundo.MundoBuilder;
  * @author Manuel Alejandro Coral Lozano - Juan Sebasti�n Quintero Yoshioka
  *         Proyecto final - Algoritmos y programaci�n II.
  */
-public class Teclado implements KeyListener {
+public class Teclado implements KeyListener, PalancaMando {
 
 	// -----------------------------------------------------------------
 	// ----------------------------Atributos----------------------------
@@ -89,6 +89,30 @@ public class Teclado implements KeyListener {
 	 */
 	public void keyTyped(KeyEvent e) {
 
+	}
+
+	public MundoBuilder getActu() {
+		return actu;
+	}
+
+	public void setActu(MundoBuilder actu) {
+		this.actu = actu;
+	}
+
+	public NaveJugador getNavesita() {
+		return navesita;
+	}
+
+	public void setNavesita(NaveJugador navesita) {
+		this.navesita = navesita;
+	}
+
+	public InterfazSpaceInvaders getInterfaz() {
+		return interfaz;
+	}
+
+	public void setInterfaz(InterfazSpaceInvaders interfaz) {
+		this.interfaz = interfaz;
 	}
 
 }
