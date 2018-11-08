@@ -23,6 +23,8 @@ public class SpaceInvaders extends MundoBuilder{
 	 * 
 	 */
 	private boolean enFuncionamiento;
+	
+	ArchivoJugador archivoJugador;
 
 	public void buildMundo(boolean enFuncionamiento) {
 		
@@ -46,6 +48,8 @@ public class SpaceInvaders extends MundoBuilder{
 		} catch (ClassNotFoundException | IOException e) {
 
 		}
+
+		archivoJugador = new ProxyArchivoJugador("./data/jugador");
 	}
 
 	// -----------------------------------------------------------------
@@ -115,17 +119,7 @@ public class SpaceInvaders extends MundoBuilder{
 	 * 
 	 */
 	public void serializarJugador() throws IOException {
-
-		File archivo = new File("./data/jugador");
-
-		FileOutputStream fos = new FileOutputStream(archivo);
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-		oos.writeObject(mundo.getJugadores());
-
-		oos.close();
-		fos.close();
-
+		archivoJugador.guardar(mundo.getJugadores());  
 	}
 
 	public void iniciarPartida () {
@@ -140,16 +134,6 @@ public class SpaceInvaders extends MundoBuilder{
 	 */
 	@SuppressWarnings("unchecked")
 	public void deserializarJugador() throws IOException, ClassNotFoundException {
-
-		File archivo = new File("./data/jugador");
-
-		FileInputStream fis = new FileInputStream(archivo);
-		ObjectInputStream ois = new ObjectInputStream(fis);
-
-		mundo.setJugadores((ArrayList<NaveJugador>) ois.readObject());
-
-		ois.close();
-		fis.close();
 	}
 
 	public ArrayList<Partida> darPartidasJugador() {
