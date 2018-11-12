@@ -1,0 +1,4 @@
+# Clases compiladas
+*.class
+# Archivos de configuracion Mac OS X
+*.DS_Store

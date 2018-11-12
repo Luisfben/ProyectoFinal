@@ -61,12 +61,14 @@ public class DialogoCrearJugador extends JDialog implements ActionListener {
 	/**
 	 * 
 	 */
-	JLabel labNombre;
+	//JLabel labNombre;
+	BorderDecorator labNombre;
 
 	/**
 	 * 
 	 */
-	JLabel labNickname;
+	//JLabel labNickname;
+	BorderDecorator labNickname;
 
 	/**
 	 * 
@@ -101,8 +103,9 @@ public class DialogoCrearJugador extends JDialog implements ActionListener {
 
 		auxiliar = new JPanel();
 		auxiliar.setLayout(null);
-
-		labNombre = new JLabel("NOMBRE DEL JUGADOR");
+		
+		//labNombre = new JLabel("NOMBRE DEL JUGADOR");
+		labNombre = new BorderDecorator(new JLabel("NOMBRE DEL JUGADOR"));
 		labNombre.setForeground(Color.RED);
 		labNombre.setFont(new Font("ArcadeClassic", Font.PLAIN, 33));
 		labNombre.setBounds(10, 60, 350, 20);
@@ -113,7 +116,8 @@ public class DialogoCrearJugador extends JDialog implements ActionListener {
 		txtNombre.setForeground(Color.BLUE);
 		txtNombre.setFont(new Font("ArcadeClassic", Font.PLAIN, 25));
 
-		labNickname = new JLabel("NICKNAME");
+		//labNickname = new JLabel("NICKNAME");
+		labNickname = new BorderDecorator(new JLabel("NICKNAME"));		
 		labNickname.setForeground(Color.red);
 		labNickname.setFont(new Font("ArcadeClassic", Font.PLAIN, 33));
 		labNickname.setBounds(10, 150, 260, 20);
@@ -175,7 +179,7 @@ public class DialogoCrearJugador extends JDialog implements ActionListener {
 		} else if (comando.equals(ACEPTAR)) {
 			if (txtNombre.getText().equals(null) || txtNombre.getText().equals("") || txtNickame.getText().equals(null)
 					|| txtNickame.getText().equals(""))
-				JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre y un nickname válido",
+				JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre y un nickname vï¿½lido",
 						"Error al crear el jugador", JOptionPane.ERROR_MESSAGE);
 
 			else if (txtNickame.getText().length() != 5) {
@@ -189,11 +193,11 @@ public class DialogoCrearJugador extends JDialog implements ActionListener {
 	}
 	// Fin temporal
 	// -----------------------------------------------------------------
-	// -----------------------------Métodos-----------------------------
+	// -----------------------------Mï¿½todos-----------------------------
 	// -----------------------------------------------------------------
 
 	// -----------------------------------------------------------------
-	// -----------------------------Métodos-----------------------------
+	// -----------------------------Mï¿½todos-----------------------------
 	// -----------------------------------------------------------------
 
 	/**
