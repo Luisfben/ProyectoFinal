@@ -2,10 +2,10 @@ package mundo;
 
 import java.io.Serializable;
 
-public class NaveFactory implements NaveFactoryMethod, Serializable {
+public class EnemigoFactory implements EnemigoFactoryMethod, Serializable {
 
 	@Override
-	public Enemigo createNave(TipoNave tipo, double velocidad, int posX, int posY, int vida, int ancho, int alto,
+	public Enemigo createEnemigo(TipoNave tipo, double velocidad, int posX, int posY, int vida, int ancho, int alto,
 			int direccion, String rutaImage, String ruta) {
 		switch (tipo) {
 		case INVASORPULPO:
@@ -15,12 +15,9 @@ public class NaveFactory implements NaveFactoryMethod, Serializable {
 		case INVASORCANGREJO:
 			return new InvasorCangrejo(velocidad, posX, posY, vida, ancho, alto, direccion, rutaImage, ruta);
 		default:
-			return null;
+			return new NullEnemigo(velocidad, posX, posY, vida, ancho, alto, direccion, rutaImage, ruta);
+			//return null;
 		}
 	}
 
-	@Override
-	public Nave createNave(String nombre, String nickname) {
-		return new NaveJugador(nombre,nickname);
-	}
 }

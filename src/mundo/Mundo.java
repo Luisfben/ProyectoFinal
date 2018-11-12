@@ -8,7 +8,7 @@ public class Mundo {
 	private Partida partidaActual;
 	private NaveJugador jugadorActual;
 	private Puntaje primerPuntaje;
-	private NaveFactoryMethod factoryNave;
+	private EnemigoFactoryMethod factoryNave;
 	// ----------------------------Atributos----------------------------
 	private boolean enFuncionamiento;
 
@@ -45,11 +45,11 @@ public class Mundo {
 		this.primerPuntaje = primerPuntaje;
 	}
 
-	public NaveFactoryMethod getFactoryNave() {
+	public EnemigoFactoryMethod getFactoryNave() {
 		return factoryNave;
 	}
 
-	public void setFactoryNave(NaveFactoryMethod factoryNave) {
+	public void setFactoryNave(EnemigoFactoryMethod factoryNave) {
 		this.factoryNave = factoryNave;
 	}
 

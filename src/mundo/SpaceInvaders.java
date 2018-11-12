@@ -28,7 +28,7 @@ public class SpaceInvaders extends MundoBuilder{
 
 	public void buildMundo(boolean enFuncionamiento) {
 		
-		mundo.setFactoryNave(new NaveFactory());
+		mundo.setFactoryNave(new EnemigoFactory());
 		
 		this.enFuncionamiento = enFuncionamiento;
 		
@@ -101,9 +101,9 @@ public class SpaceInvaders extends MundoBuilder{
 	public void agregarJugador(String nombre, String nickname) throws NicknameYaExisteException, IOException {
 
 		if (buscarJugador(nickname) == null) {
-			Nave agregar = mundo.getFactoryNave().createNave(nombre, nickname);
-			mundo.getJugadores().add((NaveJugador) agregar);
-			mundo.setJugadorActual((NaveJugador) agregar);
+			NaveJugador agregar = new NaveJugador(nombre, nickname);			
+			mundo.getJugadores().add(agregar);
+			mundo.setJugadorActual(agregar);
 			mundo.getJugadorActual().setPosInicialX(300);
 			mundo.getJugadorActual().setPosIncialY(410);
 			mundo.getJugadorActual().setAncho(30);

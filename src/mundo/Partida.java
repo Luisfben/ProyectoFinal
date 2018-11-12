@@ -46,7 +46,7 @@ public class Partida implements Serializable {
 	 */
 	private Nivel nivel;
 
-	private NaveFactoryMethod factoryNave;
+	private EnemigoFactoryMethod factoryEnemigo;
 	// -----------------------------------------------------------------
 	// ----------------------------Atributos----------------------------
 	// -----------------------------------------------------------------
@@ -66,7 +66,7 @@ public class Partida implements Serializable {
 	 * @param duracionNivel
 	 */
 	public Partida(String nombre) {
-		factoryNave = new NaveFactory();
+		factoryEnemigo = new EnemigoFactory();
 		this.nombre = nombre;
 		nivel = new Nivel("1", 0, 0, 0, 0, 0, 0, 0);
 
@@ -278,7 +278,7 @@ public class Partida implements Serializable {
 							, nivel.getPosYPrimerEnemigo(), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
 							Enemigo.DERECHA, "./data/imagenes/Naves/s0.png", "./data/imagenes/Naves/s1.png");
 					*/
-					enemigos[i][j] = factoryNave.createNave(TipoNave.INVASORCALAMAR, nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo())
+					enemigos[i][j] = factoryEnemigo.createEnemigo(TipoNave.INVASORCALAMAR, nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo())
 							, nivel.getPosYPrimerEnemigo(), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
 							Enemigo.DERECHA, "./data/imagenes/Naves/s0.png", "./data/imagenes/Naves/s1.png");
 					
@@ -288,7 +288,7 @@ public class Partida implements Serializable {
 							(i *  nivel.getPosYPrimerEnemigo() +  nivel.getPosYPrimerEnemigo()), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
 							Enemigo.DERECHA, "./data/imagenes/Naves/p0.png", "./data/imagenes/Naves/p1.png");
 					*/
-					enemigos[i][j] = factoryNave.createNave(TipoNave.INVASORCANGREJO, nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo()),
+					enemigos[i][j] = factoryEnemigo.createEnemigo(TipoNave.INVASORCANGREJO, nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo()),
 							(i *  nivel.getPosYPrimerEnemigo() +  nivel.getPosYPrimerEnemigo()), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
 							Enemigo.DERECHA, "./data/imagenes/Naves/p0.png", "./data/imagenes/Naves/p1.png");
 					
@@ -298,10 +298,14 @@ public class Partida implements Serializable {
 							(i * nivel.getPosYPrimerEnemigo() + nivel.getPosYPrimerEnemigo()), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
 							Enemigo.DERECHA, "./data/imagenes/Naves/r0.png", "./data/imagenes/Naves/r1.png");
 					*/
-					enemigos[i][j] = factoryNave.createNave(TipoNave.INVASORPULPO, nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo()),
+					/*
+					enemigos[i][j] = factoryEnemigo.createEnemigo(TipoNave.INVASORPULPO, nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo()),
 							(i * nivel.getPosYPrimerEnemigo() + nivel.getPosYPrimerEnemigo()), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
 							Enemigo.DERECHA, "./data/imagenes/Naves/r0.png", "./data/imagenes/Naves/r1.png");
-					
+					*/
+					enemigos[i][j] = factoryEnemigo.createEnemigo(TipoNave.INVASORNOEXISTE, nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo()),
+							(i * nivel.getPosYPrimerEnemigo() + nivel.getPosYPrimerEnemigo()), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
+							Enemigo.DERECHA, "./data/imagenes/Naves/r0.png", "./data/imagenes/Naves/r1.png");					
 				}
 			}
 		}
