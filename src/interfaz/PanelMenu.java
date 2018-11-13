@@ -188,7 +188,7 @@ public class PanelMenu extends JPanel implements ActionListener {
 		// T�tulo del juego: "SPACE INVADERS"
 		JLabel space = new JLabel("SPACE INVADERS");
 		space.setForeground(Color.WHITE);
-		space.setFont(new Font("ArcadeClassic", Font.PLAIN, 74));
+		space.setFont(new Font("ArcadeClassic", Font.PLAIN, 60));
 		space.setBounds(5, 75, 560, 80);
 		add(space);
 
@@ -250,7 +250,8 @@ public class PanelMenu extends JPanel implements ActionListener {
 		labLoginRapido = new JLabel("LOGIN RAPIDO");
 		labLoginRapido.setForeground(Color.WHITE);
 		labLoginRapido.setBounds(10, 300, 250, 23);
-		labLoginRapido.setFont(new Font("ArcadeClassic", Font.PLAIN, 40));
+		labLoginRapido.setFont(new Font("ArcadeClassic", Font.PLAIN, 30));
+		labLoginRapido.setToolTipText("Clic para realizar un logueo rapido");
 		add(labLoginRapido);
 		labLoginRapido.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
@@ -275,9 +276,10 @@ public class PanelMenu extends JPanel implements ActionListener {
 		// Boton Open Menu Jugar
 		labOpenMenuJugar = new JLabel("JUGAR");
 		labOpenMenuJugar.setBounds(10, 240, 110, 23);
-		labOpenMenuJugar.setFont(new Font("ArcadeClassic", Font.PLAIN, 40));
+		labOpenMenuJugar.setFont(new Font("ArcadeClassic", Font.PLAIN, 30));
 		labOpenMenuJugar.setForeground(Color.WHITE);
 		labOpenMenuJugar.setAlignmentX(RIGHT_ALIGNMENT);
+		labOpenMenuJugar.setToolTipText("Clic para crear una partida nueva o cargar una partida anterior");
 		labOpenMenuJugar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -288,10 +290,11 @@ public class PanelMenu extends JPanel implements ActionListener {
 
 		// Boton Open Menu Jugador
 		labOpenMenuJugador = new JLabel("JUGADOR");
-		labOpenMenuJugador.setFont(new Font("ArcadeClassic", Font.PLAIN, 40));
+		labOpenMenuJugador.setFont(new Font("ArcadeClassic", Font.PLAIN, 30));
 		labOpenMenuJugador.setBounds(10, 270, 190, 23);
 		labOpenMenuJugador.setForeground(Color.WHITE);
 		labOpenMenuJugador.setAlignmentX(RIGHT_ALIGNMENT);
+		labOpenMenuJugador.setToolTipText("Clic para crear un nuevo jugador o para seleccionar un jugador anterior");
 		labOpenMenuJugador.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -303,8 +306,9 @@ public class PanelMenu extends JPanel implements ActionListener {
 		// JLabel de los mejores puntajes
 		labMejoresPuntajes = new JLabel("MEJORES PUNTAJES");
 		labMejoresPuntajes.setForeground(Color.WHITE);
-		labMejoresPuntajes.setFont(new Font("ArcadeClassic", Font.PLAIN, 40));
+		labMejoresPuntajes.setFont(new Font("ArcadeClassic", Font.PLAIN, 30));
 		labMejoresPuntajes.setBounds(10, 360, 340, 23);
+		labMejoresPuntajes.setToolTipText("Clic para mostrar listado de los mejores puntajes");
 		add(labMejoresPuntajes);
 		labMejoresPuntajes.addMouseListener(new MouseListener() {
 
@@ -342,8 +346,9 @@ public class PanelMenu extends JPanel implements ActionListener {
 		// JLabel con las intrucciones
 		labInstrucciones = new JLabel("INSTRUCCIONES");
 		labInstrucciones.setForeground(Color.WHITE);
-		labInstrucciones.setFont(new Font("ArcadeClassic", Font.PLAIN, 40));
+		labInstrucciones.setFont(new Font("ArcadeClassic", Font.PLAIN, 30));
 		labInstrucciones.setBounds(10, 330, 300, 23);
+		labInstrucciones.setToolTipText("Clic para mostrar instrucciones de uso de la panlanca de mando");
 		labInstrucciones.addMouseListener(new MouseListener() {
 
 			@Override

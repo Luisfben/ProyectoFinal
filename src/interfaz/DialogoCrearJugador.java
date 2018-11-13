@@ -115,6 +115,7 @@ public class DialogoCrearJugador extends JDialog implements ActionListener, IDia
 		txtNombre.setBounds(10, 85, 205, 25);
 		txtNombre.setForeground(Color.BLUE);
 		txtNombre.setFont(new Font("ArcadeClassic", Font.PLAIN, 25));
+		txtNombre.setToolTipText("Digite el nombre del jugador");
 
 		//labNickname = new JLabel("NICKNAME");
 		labNickname = new BorderDecorator(new JLabel("NICKNAME"));		
@@ -127,6 +128,7 @@ public class DialogoCrearJugador extends JDialog implements ActionListener, IDia
 		txtNickame.setBounds(10, 180, 150, 25);
 		txtNickame.setForeground(Color.BLUE);
 		txtNickame.setFont(new Font("ArcadeClassic", Font.PLAIN, 25));
+		txtNickame.setToolTipText("El nickname debe tener 5 caracteres");
 
 		JLabel imagen = new JLabel();
 		ImageIcon icono = new ImageIcon("./data/imagenes/fondAgJ.jpg");
