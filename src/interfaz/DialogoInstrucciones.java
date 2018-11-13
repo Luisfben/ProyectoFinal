@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class DialogoInstrucciones extends JDialog implements ListSelectionListener, ActionListener {
+public class DialogoInstrucciones extends JDialog implements ListSelectionListener, ActionListener, IDialogo {
 	// -----------------------------------------------------------------
 	// ---------------------------Constantes----------------------------
 	// -----------------------------------------------------------------
@@ -95,6 +95,7 @@ public class DialogoInstrucciones extends JDialog implements ListSelectionListen
 	/**
 	 * 
 	 */
+	@Override
 	public void mostrar() {
 		setSize(600, 300);
 		setLocationRelativeTo(null);
@@ -136,7 +137,7 @@ public class DialogoInstrucciones extends JDialog implements ListSelectionListen
 		int[] y7 = { 47, 47, 63, 63 };
 		g2.fillPolygon(x7, y7, 4);
 
-		// Intrucción para mover
+		// Intrucciï¿½n para mover
 		g2.setColor(Color.WHITE);
 		g2.setFont(new Font("ArcadeClassic", Font.PLAIN, 18));
 		g2.drawString("USE LAS FLECHAS DE", 60, 230);
@@ -172,7 +173,7 @@ public class DialogoInstrucciones extends JDialog implements ListSelectionListen
 		g2.setFont(new Font("ArcadeClassic", Font.PLAIN, 25));
 		g2.drawString("SPACE", 340, 190);
 
-		// Intrucción para disparar
+		// Intrucciï¿½n para disparar
 		g2.setColor(Color.WHITE);
 		g2.setFont(new Font("ArcadeClassic", Font.PLAIN, 18));
 		g2.drawString("DISPARA CON LA", 390, 230);
