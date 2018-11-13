@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  * @author squin
  *
  */
-public class DialogoCrearJugador extends JDialog implements ActionListener {
+public class DialogoCrearJugador extends JDialog implements ActionListener, IDialogo {
 
 	// -----------------------------------------------------------------
 	// ---------------------------Constantes----------------------------
@@ -203,6 +203,7 @@ public class DialogoCrearJugador extends JDialog implements ActionListener {
 	/**
 	 * 
 	 */
+	@Override
 	public void mostrar() {
 		setSize(400, 400);
 		add(auxiliar);

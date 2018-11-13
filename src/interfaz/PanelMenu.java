@@ -75,7 +75,7 @@ public class PanelMenu extends JPanel implements ActionListener {
 	/**
 	 * 
 	 */
-	DialogoCrearJugador dialogoCrearJugador;
+	//DialogoCrearJugador dialogoCrearJugador;
 
 	/**
 	 * 
@@ -85,7 +85,7 @@ public class PanelMenu extends JPanel implements ActionListener {
 	/**
 	 * 
 	 */
-	DialogoCrearPartida dialogoCrearPartida;
+	//DialogoCrearPartida dialogoCrearPartida;
 
 	/**
 	 *
@@ -96,7 +96,7 @@ public class PanelMenu extends JPanel implements ActionListener {
 	 * 
 	 */
 	//DialogoInstrucciones dialogoInstrucciones;
-	Invoker dialogoInstrucciones;
+	Invoker invoker;
 	
 	/**
 	 * 
@@ -183,14 +183,13 @@ public class PanelMenu extends JPanel implements ActionListener {
 		add(space);
 
 		// Inicializa los 4 di�logos que se puede ver en el men�
-		dialogoCrearJugador = new DialogoCrearJugador(interfaz);
-		dialogoCrearPartida = new DialogoCrearPartida(interfaz);
-		dialogoSeleccionarJugador = new DialogoSeleccionarJugador(interfaz);
-		dialogoSeleccionarPartida = new DialogoSeleccionarPartida(interfaz);
-		//dialogoInstrucciones = new DialogoInstrucciones(interfaz);
-		MostrarDialogo mostrarDialogo = new MostrarDialogo(new DialogoInstrucciones(interfaz));
-		dialogoInstrucciones = new Invoker(mostrarDialogo);
-		
+		dialogoSeleccionarJugador = new DialogoSeleccionarJugador(interfaz); 
+		dialogoSeleccionarPartida = new DialogoSeleccionarPartida(interfaz); 
+
+		invoker = new Invoker();
+		invoker.add(CREAR_JUGADOR,new MostrarDialogo(new DialogoCrearJugador(interfaz)));
+		invoker.add(CREAR_PARTIDA,new MostrarDialogo(new DialogoCrearPartida(interfaz)));
+		invoker.add(INTRUCCIONES,new MostrarDialogo(new DialogoInstrucciones(interfaz)));
 		
 		// Popup Menu Jugar
 		popMenuJugar = new JPopupMenu();
@@ -356,7 +355,7 @@ public class PanelMenu extends JPanel implements ActionListener {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				//dialogoInstrucciones.mostrar();
-				dialogoInstrucciones.execute();
+				invoker.execute(INTRUCCIONES);
 			}
 		});
 		// labInstrucciones.addMouseListener(new MouseAdapter() {
@@ -380,7 +379,8 @@ public class PanelMenu extends JPanel implements ActionListener {
 		String comando = e.getActionCommand();
 
 		if (comando.equals(CREAR_JUGADOR)) {
-			dialogoCrearJugador.mostrar();
+			//dialogoCrearJugador.mostrar();
+			invoker.execute(CREAR_JUGADOR);
 		} else if (comando.equals(SELECCIONAR_JUGADOR)) {
 			interfaz.actualizarJugadores();
 			dialogoSeleccionarJugador.mostrar();
@@ -388,7 +388,8 @@ public class PanelMenu extends JPanel implements ActionListener {
 
 		else if (comando.equals(CREAR_PARTIDA))
 			if (interfaz.getJugadorActual() != null)
-				dialogoCrearPartida.mostrar();
+				//dialogoCrearPartida.mostrar();
+				invoker.execute(CREAR_PARTIDA);
 			else
 				JOptionPane.showMessageDialog(this, "Por favor crear o seleccionar un jugador",
 						"Error al iniciar partida", JOptionPane.ERROR_MESSAGE);

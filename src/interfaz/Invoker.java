@@ -1,13 +1,16 @@
 package interfaz;
 
-public class Invoker {
-	private Command command;
+import java.util.HashMap;
+import java.util.Map;
 
-	public Invoker(Command command) {
-		this.command = command;
+public class Invoker {
+	private Map<String, Command> commandList = new HashMap<>();
+
+	public void add(String key, Command command) {
+		this.commandList.put(key, command);
 	}
 
-	public void execute() {
-		command.execute();
+	public void execute(String key) {
+		this.commandList.get(key).execute();
 	}
 }
