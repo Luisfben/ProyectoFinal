@@ -18,6 +18,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import excepciones.NicknameYaExisteException;
+import util.Constantes;
+
 /**
  * Panel que contiene el men� principal del juego
  * 
@@ -156,6 +162,8 @@ public class PanelMenu extends JPanel implements ActionListener {
 	 */
 	JLabel labInstrucciones;
 
+	private final static Logger log = Logger.getLogger(PanelMenu.class);
+	
 	// -----------------------------------------------------------------
 	// ---------------------------Constructor---------------------------
 	// -----------------------------------------------------------------
@@ -165,7 +173,9 @@ public class PanelMenu extends JPanel implements ActionListener {
 	 * @param pPrincipal
 	 */
 	public PanelMenu(InterfazSpaceInvaders interfaz) {
-
+		
+		PropertyConfigurator.configure(Constantes.logProperties);
+		
 		// Inicializa la asociaci�n
 		this.interfaz = interfaz;
 
@@ -248,9 +258,13 @@ public class PanelMenu extends JPanel implements ActionListener {
 				if(respuesta == null || respuesta.equals("")){
 					JOptionPane.showMessageDialog(null, "Por favor ingresar un nickname v�lido",
 							"Error al escribir el nickname", JOptionPane.ERROR_MESSAGE);
+					log.warn("nickname invalida ");
+
 				} else if(respuesta.length() != 5){
 					JOptionPane.showMessageDialog(null, "Recuerde que el nickname contiene 5 d�gitos",
 							"Error al escribir el nickname", JOptionPane.ERROR_MESSAGE);
+					log.warn("nickname no contiene 5 digitos");
+
 				} else
 					interfaz.loginRapido(respuesta);
 			}
@@ -387,21 +401,23 @@ public class PanelMenu extends JPanel implements ActionListener {
 		}
 
 		else if (comando.equals(CREAR_PARTIDA))
-			if (interfaz.getJugadorActual() != null)
+			if (interfaz.getJugadorActual() != null) {
 				//dialogoCrearPartida.mostrar();
 				invoker.execute(CREAR_PARTIDA);
-			else
+			}else {
 				JOptionPane.showMessageDialog(this, "Por favor crear o seleccionar un jugador",
 						"Error al iniciar partida", JOptionPane.ERROR_MESSAGE);
+				log.warn("No creo o seleccionó jugador");
 
-		else if (comando.equals(SELECCIONAR_PARTIDA)) {
+			}else if (comando.equals(SELECCIONAR_PARTIDA)) {
 			if (interfaz.getJugadorActual() != null) {
 				interfaz.actualizarPartidas();
 				dialogoSeleccionarPartida.mostrar();
-			} else
+			} else {
 				JOptionPane.showMessageDialog(this, "Por favor crear o seleccionar un jugador",
 						"Error al seleccionar la partida", JOptionPane.ERROR_MESSAGE);
-
+				log.warn("No creo o seleccionó jugador");
+			}
 		}
 	}
 

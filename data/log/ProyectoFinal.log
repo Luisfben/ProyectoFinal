@@ -1,0 +1,18 @@
+08:06:34,180  INFO InterfazSpaceInvaders:455 - Test info
+08:08:52,584  INFO InterfazSpaceInvaders:455 - Inicio aplicación
+08:08:56,053  INFO InterfazSpaceInvaders:460 - Finalizo aplicación
+09:07:41,867  INFO InterfazSpaceInvaders:454 - Inicio aplicación
+09:07:49,420  INFO InterfazSpaceInvaders:459 - Finalizo aplicación
+09:08:45,309  INFO InterfazSpaceInvaders:454 - Inicio aplicación
+09:08:57,927  INFO InterfazSpaceInvaders:459 - Finalizo aplicación
+09:09:47,643  INFO NicknameYaExisteException:15 - El jugador con el nombre 12345 ya existe
+09:15:32,372  INFO InterfazSpaceInvaders:454 - Inicio aplicación
+09:15:38,119  INFO InterfazSpaceInvaders:459 - Finalizo aplicación
+09:15:43,884  INFO PanelMenu:261 - nickname invalida 
+09:16:17,665  INFO PanelMenu:266 - nickname no contiene 5 digitos
+09:17:46,526  INFO InterfazSpaceInvaders:454 - Inicio aplicación
+09:17:57,920  WARN PanelMenu:261 - nickname invalida 
+09:21:33,016  INFO InterfazSpaceInvaders:454 - Inicio aplicación
+09:21:42,600  WARN PanelMenu:410 - No creo o seleccionó jugador
+09:21:53,290  WARN PanelMenu:419 - No creo o seleccionó jugador
+09:29:08,408  INFO InterfazSpaceInvaders:454 - Inicio aplicación

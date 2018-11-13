@@ -6,6 +6,8 @@ import java.awt.Container;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -22,6 +24,7 @@ import mundo.MundoBuilder;
 import mundo.NaveJugador;
 import mundo.Partida;
 import mundo.SpaceInvaders;
+import util.Constantes;
 import control.PalancaMando;
 import control.Teclado;
 import control.TecladoAdapter;
@@ -61,7 +64,9 @@ public class InterfazSpaceInvaders extends JFrame implements Visitable {
 	private static InterfazSpaceInvaders instancia;
 	
 	private MundoBuilder mundoBuilder;
-
+	
+	private final static Logger log = Logger.getLogger(InterfazSpaceInvaders.class);
+	
 	public static InterfazSpaceInvaders getInstance() {
 		if(instancia==null) {
 			instancia = new InterfazSpaceInvaders();
@@ -445,6 +450,8 @@ public class InterfazSpaceInvaders extends JFrame implements Visitable {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		PropertyConfigurator.configure(Constantes.logProperties);
+		log.info("Inicio aplicación");
 		InterfazSpaceInvaders ventana = InterfazSpaceInvaders.getInstance();
 		ventana.setMundoBuilder(new SpaceInvaders()); 
 		ventana.constructInterfaceSpaceInvader();
