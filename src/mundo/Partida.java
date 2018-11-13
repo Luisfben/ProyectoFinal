@@ -7,6 +7,12 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import entity.Niveles;
 import excepciones.PartidaYaExisteException;
 
 /**
@@ -208,6 +214,36 @@ public class Partida implements Serializable {
 	 * @throws IOException
 	 * 
 	 */
+	public void inicializarPartida() throws IOException{
+		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Niveles.class)
+				.buildSessionFactory();
+		Session session = factory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+
+		try {
+			Niveles niveles = session.get(Niveles.class, Integer.valueOf(nivel.getNivel()));
+			enemigos = new Enemigo[niveles.getFilasEnemigo()][niveles.getColumnaEnemigos()];
+			this.nivel = new Nivel(
+					String.valueOf(niveles.getNivel()), 
+					niveles.getVelocidadEnemigos(), 
+					niveles.getCantidadEnemigos(),
+					niveles.getVidaEnemigos(), 
+					niveles.getXPrimerEnemigo(), 
+					niveles.getPosYPrimerEnemigo(),
+					niveles.getAnchoEnemigos(), 
+					niveles.getAltoEnemigos()
+					);			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			tx.commit();
+			factory.close();
+		}
+		inicializarEnemigos();
+	}
+	
+	/*
 	public void inicializarPartida() throws IOException {
 
 		File archivo = new File("");
@@ -266,6 +302,7 @@ public class Partida implements Serializable {
 		br.close();
 		fr.close();
 	}
+	*/
 
 	public void inicializarEnemigos() {
 
