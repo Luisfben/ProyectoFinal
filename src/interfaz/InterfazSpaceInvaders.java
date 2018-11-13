@@ -26,7 +26,7 @@ import control.PalancaMando;
 import control.Teclado;
 import control.TecladoAdapter;
 
-public class InterfazSpaceInvaders extends JFrame {
+public class InterfazSpaceInvaders extends JFrame implements Visitable {
 
 	/**
 	 * 
@@ -107,6 +107,9 @@ public class InterfazSpaceInvaders extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		getRootPane().setBorder(BorderFactory.createLineBorder(Color.WHITE));
+
+		CambiarCursor cambiarCursor = new CambiarCursor();
+		instancia.accept(cambiarCursor);
 
 	}
 
@@ -448,4 +451,8 @@ public class InterfazSpaceInvaders extends JFrame {
 		ventana.setVisible(true);
 	}
 
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
 }
