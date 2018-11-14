@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -13,6 +17,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import com.mxrck.autocompleter.TextAutoCompleter;
+
+import mundo.Puntaje;
 
 /**
  * 
@@ -90,6 +98,7 @@ public class DialogoCrearJugador extends JDialog implements ActionListener, IDia
 	 */
 	JButton butBotonCancelar;
 
+	TextAutoCompleter textAutoCompletar;
 	// -----------------------------------------------------------------
 	// ---------------------------Constructor---------------------------
 	// -----------------------------------------------------------------
@@ -124,6 +133,8 @@ public class DialogoCrearJugador extends JDialog implements ActionListener, IDia
 		labNickname.setBounds(10, 150, 260, 20);
 
 		txtNickame = new JTextField();
+		textAutoCompletar = new TextAutoCompleter(txtNickame);
+		CargarAutoCompletar();		
 		txtNickame.setBackground(Color.orange);
 		txtNickame.setBounds(10, 180, 150, 25);
 		txtNickame.setForeground(Color.BLUE);
@@ -213,4 +224,29 @@ public class DialogoCrearJugador extends JDialog implements ActionListener, IDia
 		this.setVisible(true);
 	}
 
+	private void CargarAutoCompletar() {
+		File archivo = new File("./data/puntaje");
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		try {
+			fis = new FileInputStream(archivo);
+			ois = new ObjectInputStream(fis);
+			Puntaje primer = ((Puntaje) ois.readObject());
+			int contador = 1;
+			while(primer != null && contador <= 10){
+				textAutoCompletar.addItem(primer.getNickname());
+				contador++;
+				primer = primer.getSiguiente();
+			}			
+		} catch (IOException | ClassNotFoundException e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				ois.close();
+				fis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
