@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.mxrck.autocompleter.TextAutoCompleter;
+import com.placeholder.PlaceHolder;
 
 import mundo.Puntaje;
 
@@ -97,8 +97,8 @@ public class DialogoCrearJugador extends JDialog implements ActionListener, IDia
 	 * 
 	 */
 	JButton butBotonCancelar;
-
-	TextAutoCompleter textAutoCompletar;
+	
+	PlaceHolder placeHolder;
 	// -----------------------------------------------------------------
 	// ---------------------------Constructor---------------------------
 	// -----------------------------------------------------------------
@@ -120,11 +120,11 @@ public class DialogoCrearJugador extends JDialog implements ActionListener, IDia
 		labNombre.setBounds(10, 60, 350, 20);
 
 		txtNombre = new JTextField();
+		placeHolder = new PlaceHolder(txtNombre,"Digite nombre del jugador");
 		txtNombre.setBackground(Color.orange);
 		txtNombre.setBounds(10, 85, 205, 25);
 		txtNombre.setForeground(Color.BLUE);
 		txtNombre.setFont(new Font("ArcadeClassic", Font.PLAIN, 25));
-		txtNombre.setToolTipText("Digite el nombre del jugador");
 
 		//labNickname = new JLabel("NICKNAME");
 		labNickname = new BorderDecorator(new JLabel("NICKNAME"));		
@@ -133,13 +133,11 @@ public class DialogoCrearJugador extends JDialog implements ActionListener, IDia
 		labNickname.setBounds(10, 150, 260, 20);
 
 		txtNickame = new JTextField();
-		textAutoCompletar = new TextAutoCompleter(txtNickame);
-		CargarAutoCompletar();		
-		txtNickame.setBackground(Color.orange);
+		placeHolder = new PlaceHolder(txtNickame,"Digite nickname");
+		txtNombre.setBackground(Color.orange);
 		txtNickame.setBounds(10, 180, 150, 25);
 		txtNickame.setForeground(Color.BLUE);
 		txtNickame.setFont(new Font("ArcadeClassic", Font.PLAIN, 25));
-		txtNickame.setToolTipText("El nickname debe tener 5 caracteres");
 
 		JLabel imagen = new JLabel();
 		ImageIcon icono = new ImageIcon("./data/imagenes/fondAgJ.jpg");
@@ -224,29 +222,4 @@ public class DialogoCrearJugador extends JDialog implements ActionListener, IDia
 		this.setVisible(true);
 	}
 
-	private void CargarAutoCompletar() {
-		File archivo = new File("./data/puntaje");
-		FileInputStream fis = null;
-		ObjectInputStream ois = null;
-		try {
-			fis = new FileInputStream(archivo);
-			ois = new ObjectInputStream(fis);
-			Puntaje primer = ((Puntaje) ois.readObject());
-			int contador = 1;
-			while(primer != null && contador <= 10){
-				textAutoCompletar.addItem(primer.getNickname());
-				contador++;
-				primer = primer.getSiguiente();
-			}			
-		} catch (IOException | ClassNotFoundException e1) {
-			e1.printStackTrace();
-		} finally {
-			try {
-				ois.close();
-				fis.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
 }
