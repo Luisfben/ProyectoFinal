@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <interface id="1" language="java" name="interfaz.Command" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/Command.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="379" y="235"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="2" language="java" name="interfaz.IDialogo" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/IDialogo.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="788" y="231"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="3" language="java" name="interfaz.Invoker" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/Invoker.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="378" y="388"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="interfaz.MostrarDialogo" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/MostrarDialogo.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="582" y="233"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="interfaz.PanelMenu" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/PanelMenu.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="226" width="210" x="17" y="274"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="interfaz.DialogoCrearJugador" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/DialogoCrearJugador.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="108" width="188" x="896" y="486"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="interfaz.DialogoCrearPartida" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/DialogoCrearPartida.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="115" width="187" x="694" y="487"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="interfaz.DialogoInstrucciones" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/DialogoInstrucciones.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="172" x="508" y="486"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="9">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <association id="10">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="11" name="idialogo"/>      
+      <multiplicity id="12" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="13">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="14" name="commandList"/>      
+      <multiplicity id="15" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="16">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <association id="17">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="18" name="invoker"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="20">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <realization id="21">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

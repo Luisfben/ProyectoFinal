@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="mundo.SpaceInvaders" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/SpaceInvaders.java" 
+    binary="false" label="spaceInvaders" type="class" autoSize="false">    
+    <position height="692" width="156" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="144" width="122" x="5" y="78"/>    
+    </execution>    
+    <execution id="5">      
+      <position height="372" width="122" x="5" y="227"/>    
+    </execution>    
+    <execution id="8">      
+      <position height="21" width="7" x="63" y="515"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="21" width="7" x="63" y="159"/>    
+    </execution>  
+  </object>  
+  <object id="10" language="java" name="mundo.ProxyArchivoJugador" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/ProxyArchivoJugador.java" 
+    binary="false" label="proxyArchivoJugador" type="class" autoSize="false">    
+    <position height="650" width="216" x="126" y="0"/>    
+    <execution id="4">      
+      <position height="102" width="170" x="131" y="99"/>    
+    </execution>    
+    <execution id="12">      
+      <position height="21" width="170" x="131" y="157"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="283" width="170" x="131" y="274"/>    
+    </execution>    
+    <execution id="20">      
+      <position height="21" width="7" x="213" y="394"/>    
+    </execution>    
+    <execution id="21">      
+      <position height="21" width="7" x="264" y="476"/>    
+    </execution>  
+  </object>  
+  <object id="22" language="java" name="mundo.ArchivoJugador" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/ArchivoJugador.java" 
+    binary="false" label="archivoJugador" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="194" y="0"/>    
+    <execution id="7">      
+      <position height="330" width="131" x="305" y="248"/>    
+    </execution>  
+  </object>  
+  <object id="24" language="java" name="mundo.RealArchivoJugador" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/RealArchivoJugador.java" 
+    binary="false" label="realArchivoJugador" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="434" y="0"/>    
+    <execution id="16">      
+      <position height="116" width="160" x="440" y="341"/>    
+    </execution>    
+    <execution id="26">      
+      <position height="63" width="160" x="440" y="373"/>    
+    </execution>    
+    <execution id="18">      
+      <position height="66" width="7" x="520" y="452"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="29" interaction-operator="OPT">    
+    <interaction-operand id="30" constraint="realArchivoJugador==null">      
+      <fragment refId="27"/>      
+      <fragment refId="25"/>      
+      <fragment refId="15"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <message id="3" operation="ProxyArchivoJugador(java.lang.String)" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" operation="guardar(java.util.ArrayList&lt;mundo.NaveJugador&gt;):void" asynchronous="false">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="11" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="13" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="15" operation="RealArchivoJugador(java.lang.String)" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="17" operation="guardar(java.util.ArrayList&lt;mundo.NaveJugador&gt;):void" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="19" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="23" asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="25" asynchronous="false">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="26"/>  
+  </message>  
+  <message id="27" asynchronous="false">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="28" asynchronous="false">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="21"/>  
+  </message>
+</sequence-diagram>

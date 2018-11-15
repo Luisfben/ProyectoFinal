@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="mundo.Partida" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/Partida.java" 
+    binary="false" label="partida" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="687" y="0"/>    
+    <execution id="2">      
+      <position height="63" width="71" x="5" y="78"/>    
+    </execution>    
+    <execution id="5">      
+      <position height="361" width="71" x="5" y="168"/>    
+    </execution>    
+    <execution id="8">      
+      <position height="21" width="7" x="37" y="382"/>    
+    </execution>  
+  </object>  
+  <object id="9" language="java" name="mundo.EnemigoFactory" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/EnemigoFactory.java" 
+    binary="false" label="enemigoFactory" type="class" autoSize="false">    
+    <position height="281" width="216" x="75" y="0"/>    
+    <execution id="4">      
+      <position height="21" width="133" x="80" y="99"/>    
+    </execution>    
+    <execution id="10">      
+      <position height="256" width="212" x="80" y="231"/>    
+    </execution>    
+    <execution id="13">      
+      <position height="73" width="7" x="183" y="351"/>    
+    </execution>  
+  </object>  
+  <object id="15" language="java" name="mundo.EnemigoFactoryMethod" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/EnemigoFactoryMethod.java" 
+    binary="false" label="enemigoFactoryMethod" type="interface" autoSize="false">    
+    <position height="185" width="380" x="291" y="0"/>    
+    <execution id="7">      
+      <position height="319" width="376" x="296" y="189"/>    
+    </execution>  
+  </object>  
+  <object id="17" language="java" name="mundo.InvasorCalamar" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/InvasorCalamar.java" 
+    binary="false" label="invasorCalamar" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="268" y="0"/>    
+    <execution id="12">      
+      <position height="168" width="129" x="676" y="298"/>    
+    </execution>  
+  </object>  
+  <object id="20" language="java" name="mundo.Enemigo" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/Enemigo.java" 
+    binary="false" label="enemigo" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="893" y="0"/>    
+    <execution id="19">      
+      <position height="126" width="83" x="1063" y="319"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="22" interaction-operator="ALT">    
+    <interaction-operand id="23"/>  
+  </combined-fragment>  
+  <combined-fragment id="24" interaction-operator="OPT">    
+    <interaction-operand id="25" constraint="TipoNave == INVASORCALAMAR">      
+      <fragment refId="21"/>      
+      <fragment refId="18"/>      
+      <fragment refId="11"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <message id="3" operation="EnemigoFactory()" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" 
+    operation="createEnemigo(mundo.TipoNave,double,int,int,int,int,int,int,java.lang.String,java.lang.String):mundo.Enemigo" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="11" operation="InvasorCalamar(double,int,int,int,int,int,int,java.lang.String,java.lang.String)" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="14" asynchronous="false">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="16" 
+    operation="createEnemigo(mundo.TipoNave,double,int,int,int,int,int,int,java.lang.String,java.lang.String):mundo.Enemigo" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="18" operation="Enemigo(double,int,int,int,int,int,int,java.lang.String,java.lang.String)" 
+    asynchronous="false">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="21" asynchronous="false">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>
+</sequence-diagram>

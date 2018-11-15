@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="interfaz.InterfazSpaceInvaders" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/InterfazSpaceInvaders.java" 
+    binary="false" label="interfazSpaceInvaders" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="275" y="0"/>    
+    <execution id="2">      
+      <position height="187" width="172" x="5" y="148"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="21" width="172" x="5" y="190"/>    
+    </execution>    
+    <execution id="6">      
+      <position height="21" width="172" x="5" y="293"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="7" interaction-operator="OPT">    
+    <interaction-operand id="8" constraint="instancia==null">      
+      <fragment refId="5"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <message id="3" operation="getInstance():interfaz.InterfazSpaceInvaders" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="InterfazSpaceInvaders()" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>
+</sequence-diagram>

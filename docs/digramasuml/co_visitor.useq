@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="interfaz.InterfazSpaceInvaders" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/InterfazSpaceInvaders.java" 
+    binary="false" label="interfazSpaceInvaders" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="261" y="0"/>    
+    <execution id="2">      
+      <position height="245" width="172" x="5" y="78"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="182" width="172" x="5" y="120"/>    
+    </execution>    
+    <execution id="7">      
+      <position height="21" width="7" x="91" y="218"/>    
+    </execution>  
+  </object>  
+  <object id="8" language="java" name="interfaz.CambiarCursor" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/CambiarCursor.java" 
+    binary="false" label="cambiarCursor" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="290" y="0"/>    
+    <execution id="9">      
+      <position height="87" width="125" x="181" y="173"/>    
+    </execution>  
+  </object>  
+  <object id="11" language="java" name="interfaz.Visitor" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/Visitor.java" 
+    binary="false" label="visitor" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="365" y="0"/>    
+    <execution id="6">      
+      <position height="129" width="67" x="310" y="152"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="accept(interfaz.Visitor):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="visit(interfaz.InterfazSpaceInvaders):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="10" operation="setCursor(java.awt.Cursor):void" asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="12" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>
+</sequence-diagram>

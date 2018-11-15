@@ -1,0 +1,6 @@
+projectKey=space:invaders
+serverUrl=http://192.168.99.100:32770
+serverVersion=7.1.0.11001
+dashboardUrl=http://192.168.99.100:32770/dashboard/index/space:invaders
+ceTaskId=AWcStF3jm3HVUBalm7vr
+ceTaskUrl=http://192.168.99.100:32770/api/ce/task?id=AWcStF3jm3HVUBalm7vr
