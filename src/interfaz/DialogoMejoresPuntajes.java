@@ -107,14 +107,18 @@ public class DialogoMejoresPuntajes extends JDialog implements ActionListener {
 		labNombrePartida.setBounds(310, 10, 400, 25);
 		auxiliar.add(labNombrePartida);
 	
-		int x = 10;
-		int y = 30;
+		mostrarListaMejoresPuntajes(puntajes, 10, 30);
+		
+		add(auxiliar);
+		setUndecorated(true);
+		getRootPane().setBorder(BorderFactory.createLineBorder(Color.WHITE));
+	}
 
+	private void mostrarListaMejoresPuntajes(ArrayList<String> puntajes, int x, int y) {
 		JLabel numero;
 		JLabel puntaje;
 		JLabel nickname;
 		JLabel partida;
-		
 		if(puntajes != null){
 			for(int i = 0; i < puntajes.size(); i++){
 				
@@ -153,9 +157,6 @@ public class DialogoMejoresPuntajes extends JDialog implements ActionListener {
 
 			}
 		}
-		add(auxiliar);
-		setUndecorated(true);
-		getRootPane().setBorder(BorderFactory.createLineBorder(Color.WHITE));
 	}
 
 	// -----------------------------------------------------------------
@@ -174,7 +175,7 @@ public class DialogoMejoresPuntajes extends JDialog implements ActionListener {
 		}
 	}
 	// -----------------------------------------------------------------
-	// -----------------------------Métodos-----------------------------
+	// -----------------------------Mï¿½todos-----------------------------
 	// -----------------------------------------------------------------
 
 	/**
