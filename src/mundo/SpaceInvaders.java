@@ -2,6 +2,7 @@ package mundo;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -256,17 +257,22 @@ public class SpaceInvaders extends MundoBuilder{
 	 * 
 	 */
 	public void serializarPuntaje() throws IOException {
-
 		File archivo = new File("./data/puntaje");
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
 
-		FileOutputStream fos = new FileOutputStream(archivo);
-		ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-		oos.writeObject(mundo.getPrimerPuntaje());
-
-		oos.close();
-		fos.close();
-
+		try {
+			fos = new FileOutputStream(archivo);
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(mundo.getPrimerPuntaje());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			oos.close();
+			fos.close();			
+		}
 	}
 
 	/**
@@ -278,14 +284,20 @@ public class SpaceInvaders extends MundoBuilder{
 	public void deserializarPuntaje() throws IOException, ClassNotFoundException {
 
 		File archivo = new File("./data/puntaje");
-
-		FileInputStream fis = new FileInputStream(archivo);
-		ObjectInputStream ois = new ObjectInputStream(fis);
-
-		mundo.setPrimerPuntaje( (Puntaje) ois.readObject());
-
-		ois.close();
-		fis.close();
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		try {
+			fis = new FileInputStream(archivo);
+			ois = new ObjectInputStream(fis);
+			mundo.setPrimerPuntaje( (Puntaje) ois.readObject());
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			ois.close();
+			fis.close();
+		}
 	}
 
 	public int puntosPorVida(){
