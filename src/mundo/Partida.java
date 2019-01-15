@@ -7,13 +7,19 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import entity.Niveles;
 import excepciones.PartidaYaExisteException;
 
 /**
  *
  * 
- * @author Manuel Alejandro Coral Lozano - Juan Sebastián Quintero Yoshioka
- *         Proyecto final - Algoritmos y programación II.
+ * @author Manuel Alejandro Coral Lozano - Juan Sebastiï¿½n Quintero Yoshioka
+ *         Proyecto final - Algoritmos y programaciï¿½n II.
  */
 public class Partida implements Serializable {
 
@@ -46,6 +52,7 @@ public class Partida implements Serializable {
 	 */
 	private Nivel nivel;
 
+	private EnemigoFactoryMethod factoryEnemigo;
 	// -----------------------------------------------------------------
 	// ----------------------------Atributos----------------------------
 	// -----------------------------------------------------------------
@@ -65,6 +72,7 @@ public class Partida implements Serializable {
 	 * @param duracionNivel
 	 */
 	public Partida(String nombre) {
+		factoryEnemigo = new EnemigoFactory();
 		this.nombre = nombre;
 		nivel = new Nivel("1", 0, 0, 0, 0, 0, 0, 0);
 
@@ -72,7 +80,7 @@ public class Partida implements Serializable {
 	}
 
 	// -----------------------------------------------------------------
-	// -----------------------------Métodos-----------------------------
+	// -----------------------------Mï¿½todos-----------------------------
 	// -----------------------------------------------------------------
 
 	/**
@@ -206,6 +214,36 @@ public class Partida implements Serializable {
 	 * @throws IOException
 	 * 
 	 */
+	public void inicializarPartida() throws IOException{
+		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Niveles.class)
+				.buildSessionFactory();
+		Session session = factory.getCurrentSession();
+		Transaction tx = session.beginTransaction();
+
+		try {
+			Niveles niveles = session.get(Niveles.class, Integer.valueOf(nivel.getNivel()));
+			enemigos = new Enemigo[niveles.getFilasEnemigo()][niveles.getColumnaEnemigos()];
+			this.nivel = new Nivel(
+					String.valueOf(niveles.getNivel()), 
+					niveles.getVelocidadEnemigos(), 
+					niveles.getCantidadEnemigos(),
+					niveles.getVidaEnemigos(), 
+					niveles.getXPrimerEnemigo(), 
+					niveles.getPosYPrimerEnemigo(),
+					niveles.getAnchoEnemigos(), 
+					niveles.getAltoEnemigos()
+					);			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			tx.commit();
+			factory.close();
+		}
+		inicializarEnemigos();
+	}
+	
+	/*
 	public void inicializarPartida() throws IOException {
 
 		File archivo = new File("");
@@ -264,6 +302,7 @@ public class Partida implements Serializable {
 		br.close();
 		fr.close();
 	}
+	*/
 
 	public void inicializarEnemigos() {
 
@@ -271,19 +310,39 @@ public class Partida implements Serializable {
 			for (int j = 0; j < enemigos[i].length; j++) {
 
 				if (i == 0) {
+					/*
 					enemigos[i][j] = new InvasorCalamar(nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo())
 							, nivel.getPosYPrimerEnemigo(), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
 							Enemigo.DERECHA, "./data/imagenes/Naves/s0.png", "./data/imagenes/Naves/s1.png");
+					*/
+					enemigos[i][j] = factoryEnemigo.createEnemigo(TipoNave.INVASORCALAMAR, nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo())
+							, nivel.getPosYPrimerEnemigo(), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
+							Enemigo.DERECHA, "./data/imagenes/Naves/s0.png", "./data/imagenes/Naves/s1.png");
+					
 				} else if (i == 1 || i == 2) {
-
+					/*
 					enemigos[i][j] = new InvasorCangrejo(nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo()),
 							(i *  nivel.getPosYPrimerEnemigo() +  nivel.getPosYPrimerEnemigo()), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
 							Enemigo.DERECHA, "./data/imagenes/Naves/p0.png", "./data/imagenes/Naves/p1.png");
-
+					*/
+					enemigos[i][j] = factoryEnemigo.createEnemigo(TipoNave.INVASORCANGREJO, nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo()),
+							(i *  nivel.getPosYPrimerEnemigo() +  nivel.getPosYPrimerEnemigo()), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
+							Enemigo.DERECHA, "./data/imagenes/Naves/p0.png", "./data/imagenes/Naves/p1.png");
+					
 				} else if (i == 3 || i == 4) {
+					/*
 					enemigos[i][j] = new InvasorPulpo(nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo()),
 							(i * nivel.getPosYPrimerEnemigo() + nivel.getPosYPrimerEnemigo()), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
 							Enemigo.DERECHA, "./data/imagenes/Naves/r0.png", "./data/imagenes/Naves/r1.png");
+					*/
+					/*
+					enemigos[i][j] = factoryEnemigo.createEnemigo(TipoNave.INVASORPULPO, nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo()),
+							(i * nivel.getPosYPrimerEnemigo() + nivel.getPosYPrimerEnemigo()), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
+							Enemigo.DERECHA, "./data/imagenes/Naves/r0.png", "./data/imagenes/Naves/r1.png");
+					*/
+					enemigos[i][j] = factoryEnemigo.createEnemigo(TipoNave.INVASORNOEXISTE, nivel.getVelocidadEnemigos(), (j * nivel.getPosXPrimerEnemigo() + nivel.getPosXPrimerEnemigo()),
+							(i * nivel.getPosYPrimerEnemigo() + nivel.getPosYPrimerEnemigo()), nivel.getVidaEnemigos(), nivel.getAnchoEnemigos(), nivel.getAltoEnemigos(),
+							Enemigo.DERECHA, "./data/imagenes/Naves/r0.png", "./data/imagenes/Naves/r1.png");					
 				}
 			}
 		}

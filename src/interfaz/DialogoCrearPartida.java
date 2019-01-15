@@ -4,6 +4,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -14,7 +20,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class DialogoCrearPartida extends JDialog implements ActionListener {
+import com.mxrck.autocompleter.TextAutoCompleter;
+
+import mundo.Partida;
+import mundo.Puntaje;
+
+public class DialogoCrearPartida extends JDialog implements ActionListener, IDialogo {
 
 	// -----------------------------------------------------------------
 	// ---------------------------Constantes----------------------------
@@ -78,6 +89,7 @@ public class DialogoCrearPartida extends JDialog implements ActionListener {
 	 */
 	JButton butBotonCancelar;
 
+	TextAutoCompleter textAutoCompletar;
 	// -----------------------------------------------------------------
 	// ---------------------------Constructor---------------------------
 	// -----------------------------------------------------------------
@@ -107,6 +119,8 @@ public class DialogoCrearPartida extends JDialog implements ActionListener {
 		nombre1.setBounds(10, 55, 240, 20);
 
 		txtNombre = new JTextField();
+		textAutoCompletar = new TextAutoCompleter(txtNombre);
+		CargarAutoCompletar();
 		txtNombre.setBackground(Color.orange);
 		txtNombre.setBounds(10, 150, 210, 25);
 		txtNombre.setForeground(Color.BLUE);
@@ -161,7 +175,7 @@ public class DialogoCrearPartida extends JDialog implements ActionListener {
 			this.dispose();
 		else if (comando.equals(ACEPTAR)) {
 			if (txtNombre.getText().equals(null) || txtNombre.getText().equals(""))
-				JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre válido", "Error al crear el jugador",
+				JOptionPane.showMessageDialog(this, "Por favor ingrese un nombre vï¿½lido", "Error al crear el jugador",
 						JOptionPane.ERROR_MESSAGE);
 			else {
 				interfaz.reqCrearPartida(txtNombre.getText());
@@ -172,12 +186,13 @@ public class DialogoCrearPartida extends JDialog implements ActionListener {
 	}
 
 	// -----------------------------------------------------------------
-	// -----------------------------Métodos-----------------------------
+	// -----------------------------Mï¿½todos-----------------------------
 	// -----------------------------------------------------------------
 
 	/**
 	 * 
 	 */
+	@Override
 	public void mostrar() {
 		setSize(400, 225);
 		add(auxiliar);
@@ -191,5 +206,31 @@ public class DialogoCrearPartida extends JDialog implements ActionListener {
 	 */
 	public String darNombre() {
 		return txtNombre.getText();
+	}
+	
+	private void CargarAutoCompletar() {
+		File archivo = new File("./data/puntaje");
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		try {
+			fis = new FileInputStream(archivo);
+			ois = new ObjectInputStream(fis);
+			Puntaje primer = ((Puntaje) ois.readObject());
+			int contador = 1;
+			while(primer != null && contador <= 10){
+				textAutoCompletar.addItem(primer.getNombrePartida());
+				contador++;
+				primer = primer.getSiguiente();
+			}			
+		} catch (IOException | ClassNotFoundException e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				ois.close();
+				fis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

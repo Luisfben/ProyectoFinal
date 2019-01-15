@@ -2,17 +2,16 @@ package hilos;
 
 
 import interfaz.InterfazSpaceInvaders;
-import mundo.NaveJugador;
 import mundo.Partida;
-import mundo.SpaceInvaders;
+import mundo.MundoBuilder;
 
 public class HiloDisparoEnemigos extends Thread {
 
 	private Partida partidaEnemigos;
-	private SpaceInvaders space;
+	private MundoBuilder space;
 	private InterfazSpaceInvaders interfaz;
 	
-	public HiloDisparoEnemigos(Partida a, InterfazSpaceInvaders p, SpaceInvaders b) {
+	public HiloDisparoEnemigos(Partida a, InterfazSpaceInvaders p, MundoBuilder b) {
 		// TODO Auto-generated constructor stub
 
 		partidaEnemigos = a;
@@ -35,9 +34,9 @@ public class HiloDisparoEnemigos extends Thread {
 						if (partidaEnemigos.getEnemigos()[i][j].getDisparoUno() != null) {
 							partidaEnemigos.getEnemigos()[i][j].getDisparoUno().shoot1();
 							
-							if (partidaEnemigos.getEnemigos()[i][j].getDisparoUno().hitsJugador(space.getJugadorActual())) {
+							if (partidaEnemigos.getEnemigos()[i][j].getDisparoUno().hitsJugador(space.getMundo().getJugadorActual())) {
 								partidaEnemigos.getEnemigos()[i][j].eliminarDisparo();
-								space.getJugadorActual().golpe(1);
+								space.getMundo().getJugadorActual().golpe(1);
 							}
 						}
 					}

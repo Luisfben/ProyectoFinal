@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="interfaz.InterfazSpaceInvaders" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/InterfazSpaceInvaders.java" 
+    binary="false" label="interfazSpaceInvaders" type="class" autoSize="false">    
+    <position height="463" width="262" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="602" width="172" x="5" y="78"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="539" width="172" x="5" y="120"/>    
+    </execution>    
+    <execution id="7">      
+      <position height="455" width="7" x="118" y="162"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="371" width="7" x="115" y="225"/>    
+    </execution>    
+    <execution id="11">      
+      <position height="285" width="7" x="118" y="290"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="21" width="7" x="143" y="512"/>    
+    </execution>  
+  </object>  
+  <object id="17" language="java" name="mundo.MundoBuilder" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/MundoBuilder.java" 
+    binary="false" label="mundoBuilder" type="class" autoSize="false">    
+    <position height="337" width="237" x="341" y="0"/>    
+    <execution id="13">      
+      <position height="116" width="118" x="235" y="335"/>    
+    </execution>    
+    <execution id="15">      
+      <position height="116" width="7" x="380" y="438"/>    
+    </execution>    
+    <execution id="23">      
+      <position height="21" width="7" x="380" y="388"/>    
+    </execution>  
+  </object>  
+  <object id="24" language="java" name="mundo.Mundo" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/Mundo.java" 
+    binary="false" label="mundo" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="505" y="0"/>    
+    <execution id="19">      
+      <position height="74" width="69" x="504" y="356"/>    
+    </execution>  
+  </object>  
+  <object id="26" language="java" name="mundo.SpaceInvaders" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/mundo/SpaceInvaders.java" 
+    binary="false" label="spaceInvaders" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="582" y="0"/>    
+    <execution id="6">      
+      <position height="497" width="122" x="430" y="141"/>    
+    </execution>    
+    <execution id="21">      
+      <position height="21" width="7" x="635" y="465"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="getInstance():interfaz.InterfazSpaceInvaders" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="SpaceInvaders()" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="8" operation="setMundoBuilder(mundo.MundoBuilder):void" asynchronous="false">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="10" operation="constructInterfaceSpaceInvader():void" asynchronous="false">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="12" operation="crearMundo():void" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>  
+  <message id="14" operation="buildMundo(boolean):void" asynchronous="false">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="18" operation="Mundo()" asynchronous="false">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="20" asynchronous="false">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="21"/>  
+  </message>  
+  <message id="22" asynchronous="false">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="25" asynchronous="false">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="23"/>  
+  </message>  
+  <message id="27" asynchronous="false">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>
+</sequence-diagram>

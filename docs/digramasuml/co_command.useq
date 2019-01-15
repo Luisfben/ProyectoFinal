@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="interfaz.PanelMenu" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/PanelMenu.java" 
+    binary="false" label="panelMenu" type="class" autoSize="false">    
+    <position height="834" width="155" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="147" width="97" x="5" y="78"/>    
+    </execution>    
+    <execution id="7">      
+      <position height="21" width="7" x="50" y="112"/>    
+    </execution>    
+    <execution id="8">      
+      <position height="236" width="118" x="5" y="370"/>    
+    </execution>    
+    <execution id="11">      
+      <position height="21" width="7" x="77" y="582"/>    
+    </execution>  
+  </object>  
+  <object id="12" language="java" name="interfaz.Invoker" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/Invoker.java" 
+    binary="false" label="invoker" type="class" autoSize="false">    
+    <position height="813" width="173" x="155" y="0"/>    
+    <execution id="4">      
+      <position height="55" width="73" x="106" y="99"/>    
+    </execution>    
+    <execution id="6">      
+      <position height="21" width="73" x="106" y="183"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="199" width="7" x="179" y="183"/>    
+    </execution>    
+    <execution id="10">      
+      <position height="194" width="111" x="127" y="391"/>    
+    </execution>    
+    <execution id="21">      
+      <position height="105" width="111" x="127" y="540"/>    
+    </execution>    
+    <execution id="24">      
+      <position height="21" width="7" x="241" y="522"/>    
+    </execution>    
+    <execution id="25">      
+      <position height="84" width="7" x="241" y="256"/>    
+    </execution>    
+    <execution id="27">      
+      <position height="21" width="7" x="241" y="298"/>    
+    </execution>    
+    <execution id="18">      
+      <position height="21" width="7" x="241" y="456"/>    
+    </execution>  
+  </object>  
+  <object id="28" language="java" name="interfaz.Command" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/Command.java" 
+    binary="false" label="command" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="272" y="0"/>    
+    <execution id="20">      
+      <position height="65" width="92" x="333" y="499"/>    
+    </execution>  
+  </object>  
+  <object id="30" language="java" name="interfaz.MostrarDialogo" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/MostrarDialogo.java" 
+    binary="false" label="mostrarDialogo" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="381" y="0"/>    
+    <execution id="16">      
+      <position height="157" width="126" x="338" y="204"/>    
+    </execution>    
+    <execution id="34">      
+      <position height="21" width="7" x="489" y="246"/>    
+    </execution>  
+  </object>  
+  <object id="35" language="java" name="interfaz.IDialogo" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/IDialogo.java" 
+    binary="false" label="iDialogo" type="interface" autoSize="true">    
+    <position height="-1" width="-1" x="470" y="0"/>  
+  </object>  
+  <object id="36" language="java" name="interfaz.DialogoInstrucciones" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/DialogoInstrucciones.java" 
+    binary="false" label="dialogoInstrucciones" type="class" autoSize="false">    
+    <position height="446" width="247" x="637" y="0"/>    
+    <execution id="32">      
+      <position height="63" width="243" x="642" y="225"/>    
+    </execution>    
+    <execution id="23">      
+      <position height="63" width="243" x="642" y="561"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="39" interaction-operator="OPT">    
+    <interaction-operand id="40" constraint="key==INSTRUCCIONES">      
+      <fragment refId="17"/>      
+      <fragment refId="22"/>      
+      <fragment refId="19"/>      
+      <fragment refId="29"/>      
+      <fragment refId="38"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <message id="3" operation="Invoker()" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="add(java.lang.String,interfaz.Command):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="9" operation="execute(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="13" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="15" operation="MostrarDialogo(interfaz.IDialogo)" asynchronous="false">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="17" asynchronous="false">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="19" operation="execute():void" asynchronous="false">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="22" operation="mostrar():void" asynchronous="false">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="23"/>  
+  </message>  
+  <message id="26" asynchronous="false">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
+  </message>  
+  <message id="29" asynchronous="false">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>  
+  <message id="31" operation="DialogoInstrucciones(interfaz.InterfazSpaceInvaders)" asynchronous="false">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="32"/>  
+  </message>  
+  <message id="33" asynchronous="false">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="25"/>  
+  </message>  
+  <message id="37" asynchronous="false">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="34"/>  
+  </message>  
+  <message id="38" asynchronous="false">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>
+</sequence-diagram>

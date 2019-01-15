@@ -4,6 +4,7 @@ import interfaz.InterfazSpaceInvaders;
 import mundo.Enemigo;
 import mundo.InvasorCalamar;
 import mundo.InvasorCangrejo;
+import mundo.InvasorPulpo;
 
 public class HiloAnimacionEnemigos extends Thread {
 
@@ -27,8 +28,10 @@ public class HiloAnimacionEnemigos extends Thread {
 				enemigo.setRutaImage("./data/imagenes/Naves/s0.png");
 			} else if (enemigo instanceof InvasorCangrejo) {
 				enemigo.setRutaImage("./data/imagenes/Naves/p0.png");
-			} else {
+			} else if (enemigo instanceof InvasorPulpo) {
 				enemigo.setRutaImage("./data/imagenes/Naves/r0.png");
+			} else {
+				enemigo.setRutaImage("./data/imagenes/Naves/t0.png");				
 			}
 
 			try {

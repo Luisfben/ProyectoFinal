@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.2" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="interfaz.InterfazSpaceInvaders" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/interfaz/InterfazSpaceInvaders.java" 
+    binary="false" label="interfazSpaceInvaders" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="91" y="0"/>    
+    <execution id="2">      
+      <position height="297" width="172" x="5" y="101"/>    
+    </execution>    
+    <execution id="5">      
+      <position height="21" width="7" x="88" y="285"/>    
+    </execution>  
+  </object>  
+  <object id="6" language="java" name="control.TecladoAdapter" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/control/TecladoAdapter.java" 
+    binary="false" label="tecladoAdapter" type="class" autoSize="false">    
+    <position height="347" width="149" x="176" y="0"/>    
+    <execution id="4">      
+      <position height="255" width="128" x="181" y="122"/>    
+    </execution>    
+    <execution id="12">      
+      <position height="84" width="128" x="181" y="251"/>    
+    </execution>    
+    <execution id="14">      
+      <position height="21" width="7" x="250" y="293"/>    
+    </execution>    
+    <execution id="8">      
+      <position height="21" width="7" x="250" y="169"/>    
+    </execution>  
+  </object>  
+  <object id="15" language="java" name="control.Teclado" 
+    project="ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017" 
+    file="/ProyectoFinal_Coral_Lozano_Manuel_Alejandro_Quintero_Yoshioka_Juan_Sebastian_2017/src/control/Teclado.java" 
+    binary="false" label="teclado" type="class" autoSize="false">    
+    <position height="300" width="188" x="325" y="0"/>    
+    <execution id="10">      
+      <position height="143" width="114" x="439" y="213"/>    
+    </execution>  
+  </object>  
+  <message id="3" operation="TecladoAdapter(control.Teclado)" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="7" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="9" operation="keyPressed(java.awt.event.KeyEvent):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="11" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </message>  
+  <message id="13" asynchronous="false">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="16" asynchronous="false">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>
+</sequence-diagram>
